@@ -1,0 +1,75 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+body{
+    background-color: #000000;
+}
+.container{
+    display: flex;
+}
+.container-main{
+    background-color: #333333;
+    margin:0 auto;
+    padding-top: 2rem;
+    width: 50%;
+}
+.container-main h3{
+    font-family: 'Press Start 2P', cursive;
+    color: white;
+}
+.container-main img{
+    width:60%;
+    padding-top: 1rem;
+}
+.container-meme{
+    width: 100%;
+    margin: 0 auto;
+}
+.container-comment{
+    color: white;
+    line-height: 1rem;
+
+}
+button{
+    background-color: #333333;
+}
+.span2{
+    margin-left: 0.5rem;
+}
+
+.far {
+
+    width:8rem;
+    color: white;
+}
+
+/********container aside*********/
+
+.container-aside{
+    color: white;
+    font-family: 'Press Start 2P', cursive;
+    margin: 0 auto;
+    width: 25%;
+    padding-top: 2rem;
+}
+
+.container-aside h1{
+    font-size: 1.2rem;
+}
+
+.container-aside ul li img{
+    list-style-type: none;
+    color: white;
+    padding-top: 2rem;
+    width:2rem;
+
+}
+
+.container-last{
+    width: 25%;
+}
+
+.thumb-meme{
+    padding-left: 1rem;
+}
