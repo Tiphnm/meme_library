@@ -1,12 +1,14 @@
 import 'dotenv/config'
-const mongoose = require("mongoose")
+import * as bcrypt from "bcrypt"
+import mongoose from "mongoose"
 const MONGOURI: string = process.env.MONGOURI
 const collection = "db1"
 
+const SALT_WORK_FACTOR = 10;
 
-   const userSchema = new mongoose.Schema({
-    username: String,
-    password: String
+const userSchema = new mongoose.Schema({
+    username: { type: String, required: true, index: { unique: true } },
+    password: { type: String, required: true }
 })
 
 const User = mongoose.model(collection, userSchema)
@@ -34,4 +36,16 @@ async function display_users(){
     })
 }
 
-export {connect, display_users} 
+
+async function register_user(getUser,getPass) {
+ const newUser = new User({
+     username: getUser,
+     password: getPass
+ })
+
+newUser.save( (err, myUser) => {
+    if (err) return console.error(err)
+    console.log("New user registered")
+})
+}
+export {connect, display_users, register_user} 
