@@ -63,9 +63,13 @@ button{
     color: white;
     padding-top: 2rem;
     width:2rem;
-    
+
 }
 
 .container-last{
     width: 25%;
+}
+
+.thumb-meme{
+    padding-left: 1rem;
 }

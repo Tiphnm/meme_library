@@ -11,7 +11,7 @@ export default function Main() {
                     <ul>
                         <li>
                             <a>
-                                <img src={troll} alt="meme-img"/>My meme
+                                <img src={troll} alt="meme-img"/><span className="thumb-meme">My meme</span>
                             </a>
                         </li>
                     </ul>
