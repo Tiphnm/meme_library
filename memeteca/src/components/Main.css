@@ -5,11 +5,14 @@
 body{
     background-color: #000000;
 }
+.container{
+    display: flex;
+}
 .container-main{
     background-color: #333333;
     margin:0 auto;
-    width: 50%;
     padding-top: 2rem;
+    width: 50%;
 }
 .container-main h3{
     font-family: 'Press Start 2P', cursive;
@@ -39,4 +42,27 @@ button{
 
     width:8rem;
     color: white;
+}
+
+/********container aside*********/
+
+.container-aside{
+    color: white;
+    font-family: 'Press Start 2P', cursive;
+    margin: 0 auto;
+    width: 25%;
+}
+
+.container-aside h1{
+    font-size: 1.2rem;
+}
+
+.container-aside ul li img{
+    list-style-type: none;
+    color: white;
+    padding-top: 2rem;
+}
+
+.container-last{
+    width: 25%;
 }
