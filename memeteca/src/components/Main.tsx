@@ -10,8 +10,8 @@ export default function Main() {
                     <h1>Popular</h1>
                     <ul>
                         <li>
-                            <a >
-                                <img src={troll} alt="meme-img" />My meme
+                            <a>
+                                <img src={troll} alt="meme-img"/>My meme
                             </a>
                         </li>
                     </ul>
