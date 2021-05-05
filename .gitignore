@@ -1,5 +1,7 @@
-memeteca-test/
+memeteca-test/**
 node_modules/
 .env
 terraform
+memeteca-test/
+
 server/dist/
