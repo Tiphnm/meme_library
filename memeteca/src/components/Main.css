@@ -51,6 +51,7 @@ button{
     font-family: 'Press Start 2P', cursive;
     margin: 0 auto;
     width: 25%;
+    padding-top: 2rem;
 }
 
 .container-aside h1{
@@ -61,6 +62,7 @@ button{
     list-style-type: none;
     color: white;
     padding-top: 2rem;
+    width:2rem;
 }
 
 .container-last{

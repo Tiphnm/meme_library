@@ -1,5 +1,6 @@
 import React from 'react'
 import meme from '../assets/img/meme1.jpeg'
+import troll from '../assets/img/troll.png'
 
 export default function Main() {
     return (
@@ -7,11 +8,13 @@ export default function Main() {
             <div className="container">
                 <div className="container-aside">
                     <h1>Popular</h1>
-                        <ul>
-                            <li>
-                                <img src="" alt="meme-img"/>
-                            </li>
-                        </ul>
+                    <ul>
+                        <li>
+                            <a >
+                                <img src={troll} alt="meme-img" />My meme
+                            </a>
+                        </li>
+                    </ul>
                 </div>
                 <div className="container-main">
                     <div className="container-meme">
