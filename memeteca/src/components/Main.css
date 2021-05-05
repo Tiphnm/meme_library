@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+.container-main{
+    background-color: #333333;
+    margin:0 auto;
+    width: 50%;
+    padding-top: 2rem;
+}
+.container-main h3{
+    font-family: 'Press Start 2P', cursive;
+    color: white;
+}
+.container-main img{
+    width:60%;
+    padding-top: 1rem;
+}
+.container-meme{
+    width: 100%;
+    margin: 0 auto;
+}
+.container-comment{
+    color: white;
+    line-height: 1rem;
+
+}
+button{
+    background-color: #333333;
+}
+.span2{
+    margin-left: 0.5rem;
+}
+
+.far {
+
+    width:8rem;
+    color: white;
+}
