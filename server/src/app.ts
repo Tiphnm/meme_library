@@ -1,4 +1,10 @@
-const express = require('express');
+import {connect, display_users } from "./db"
+import express from "express"
+import 'dotenv/config'
+
+
+const MONGOURI: string = process.env.MONGOURI
+
 const app = express();
 const PORT = 4000;
 
@@ -14,5 +20,11 @@ app.post('/login', (req,res) => {
 
 
 app.listen(PORT, () => {
+
   console.log(`⚡️[server]: Server is running at https://localhost:${PORT}`);
+  connect()
+  display_users()
 });
+
+
+
