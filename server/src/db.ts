@@ -35,7 +35,10 @@ async function display_users(){
         console.log(res)
     })
 }
-
+/*
+userSchema.pre( save, function(next) {
+    
+})*/
 
 async function register_user(getUser,getPass) {
  const newUser = new User({
