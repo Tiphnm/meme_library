@@ -2,6 +2,7 @@ import React from 'react'
 import meme from '../assets/img/meme1.jpeg'
 import troll from '../assets/img/troll.png'
 
+
 export default function Main() {
     return (
         <>

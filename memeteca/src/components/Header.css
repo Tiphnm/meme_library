@@ -26,7 +26,7 @@
     font-family: 'Press Start 2P', cursive;
 }
 .button {
-    background-color: #4CAF50; /* Green */
+    background-color: #4c7aaf; /* Green */
     border: none;
     color: white;
     padding: 16px 32px;
@@ -38,7 +38,6 @@
     transition-duration: 0.4s;
     cursor: pointer;
   }
-  
   .button1 {
     color:#FFFFFF; 
     border: 2px solid #8340FF;
@@ -61,4 +60,17 @@
   .button2:hover {
     color:#000000;
     background-color: #FFFFFF;
+  }
+
+  .container-upload{
+    background-color: #333333;
+  }
+
+  .container-item{
+    font-family: 'Press Start 2P', cursive;
+    
+  }
+
+  .img-item{
+    padding-bottom: 1rem;
   }
