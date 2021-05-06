@@ -37,6 +37,10 @@ app.post("/register", (req,res)=> {
   res.status(201).send('User created');
 } )
 
+app.get("/memes", (req,res) => {
+  console.log(req.body)
+})
+
 app.listen(PORT, () => {
   connect()
   console.log(`⚡️[server]: Server is running at http://localhost:${PORT}`);

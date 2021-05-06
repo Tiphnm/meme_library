@@ -2,13 +2,15 @@
   "name": "memeteca",
   "version": "",
   "scripts": {
-    "build": "tsc",
-    "build:production": "npm run prestart && npm prune --production",
-    "watch": "tsc --w",
-    "prestart": "npm run build && func extensions install",
-    "start:host": "func start",
-    "start": "npm-run-all --parallel start:host watch",
-    "test": "echo \"No tests yet...\""
+    "func": "func",
+    "clean": "rimraf build",
+    "build:compile": "tsc",
+    "build:prune": "npm prune --production",
+    "prebuild:zip": "mkdirp --mode=0700 build",
+    "build:zip": "jszip-cli",
+    "build": "run-s clean build:compile build:zip",
+    "predeploy": "npm run build",
+    "deploy": "terraform apply"
   },
   "description": "",
   "devDependencies": {
