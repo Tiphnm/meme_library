@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Path from 'path';
+import troll from '../assets/img/troll.png'
 import uploadFileToBlob, { isStorageConfigured } from './azure-storage-blob';
 import './Upload.css'
 
@@ -46,7 +47,6 @@ const Upload = (): JSX.Element => {
           </button>
     </div>
   )
-
   // display file name and image
   const DisplayImagesFromContainer = () => (
     <div className="container-upload">
@@ -67,14 +67,41 @@ const Upload = (): JSX.Element => {
     </div>
   );
   return (
-    <div>
-      <h1 className="title-blob">Upload file to Azure Blob Storage</h1>
-      {storageConfigured && !uploading && DisplayForm()}
-      {storageConfigured && uploading && <div>Uploading</div>}
-      <hr />
-      {storageConfigured && blobList.length > 0 && DisplayImagesFromContainer()}
-      {!storageConfigured && <div>Storage is not configured.</div>}
-    </div>
+    <>
+      <div className="container">
+        <div className="container-aside">
+          <h1>Popular</h1>
+          <ul>
+            <li>
+              <a>
+                <img src={troll} alt="meme-img" /><span className="thumb-meme">My meme</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div className="container-main">
+          <h1 className="title-blob">Upload Your meme and enjoy</h1>
+          {storageConfigured && !uploading && DisplayForm()}
+          {storageConfigured && uploading && <div>Uploading</div>}
+          <hr />
+          {storageConfigured && blobList.length > 0 && DisplayImagesFromContainer()}
+          {!storageConfigured && <div>Storage is not configured.</div>}
+          <div className="container-comment">
+            <button>
+              <i className="far fa-thumbs-up fa-3x">
+              </i>
+            </button>
+            <button>
+              <i className="far fa-thumbs-down fa-3x">
+              </i>
+            </button>
+            <span>comments -</span>
+            <span className="span2">313 points</span>
+          </div>
+        </div>
+        <div className="container-last"></div>
+      </div>
+    </>
   );
 };
 

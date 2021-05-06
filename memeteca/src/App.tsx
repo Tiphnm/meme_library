@@ -4,7 +4,6 @@ import Upload from './components/Upload'
 import './App.css';
 import './components/Header.css'
 
-
 function App() {
   return (
     <div className="App">

@@ -43,7 +43,7 @@ const createBlobInContainer = async (containerClient: ContainerClient, file: Fil
   const blobClient = containerClient.getBlockBlobClient(file.name);
 
   // set mimetype as determined from browser with file upload control
-  const options = { blobHTTPHeaders: { blobContentType: file.type } };
+  const options = { blobHTTPHeaders: { blobContentType: file.type }};
 
   // upload file
   await blobClient.uploadBrowserData(file, options);
