@@ -1,0 +1,5 @@
+azure-functions-core-tools for the func command.
+@ffflorian/jszip-cli to ZIP my files up.
+mkdirp for creating directories.
+npm-run-all and particularly the run-s command for executing things in order.
+rimraf for deleting things.
