@@ -4,8 +4,8 @@
       "name": "myBlob",
       "type": "blobTrigger",
       "direction": "in",
-      "path": "samples-workitems/{name}",
-      "connection": ""
+      "path": "tutorial-container/{name}",
+      "connection": "AzureWebJobsStorage"
     }
   ],
   "scriptFile": "../dist/BlobTrigger/index.js"

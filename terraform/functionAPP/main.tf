@@ -36,7 +36,7 @@ variable "environment" {
 
 variable "functionapp" {
     type = string
-    default = "./build/functionapp.zip"
+    default = "../../function/build/functionapp.zip"
 }
 
 resource "random_string" "storage_name" {
@@ -107,10 +107,11 @@ data "azurerm_storage_account_sas" "sas" {
 # Create the App service plan ( consumption )
 
 resource "azurerm_app_service_plan" "asp" {
-    name = "${var.prefix}-plan"
+    name = "memeteca-plan"
     resource_group_name = "${data.azurerm_resource_group.rg.name}"
-    location = "${var.rg_location}"
-    kind = "FunctionApp"
+    location = "${data.azurerm_resource_group.rg.location}"
+    kind = "App"
+    reserved = false
     sku {
         tier = "Dynamic"
         size = "Y1"
@@ -121,12 +122,12 @@ resource "azurerm_app_service_plan" "asp" {
 #  Create the function APP 
 
 resource "azurerm_function_app" "functions" {
-    name = "${var.prefix}-${var.environment}"
-    location = "${var.rg_location}"
+    name = "memetecafuncionapp"
+    location = "${data.azurerm_resource_group.rg.location}"
     resource_group_name = "${data.azurerm_resource_group.rg.name}"
     app_service_plan_id = "${azurerm_app_service_plan.asp.id}"
-    storage_connection_string = "${data.azurerm_storage_account.storage.primary_connection_string}"
-    version = "~2"
+    storage_account_name = "${data.azurerm_storage_account.storage.name}"
+    storage_account_access_key = "${data.azurerm_storage_account.storage.primary_access_key}" 
 
     app_settings = {
         https_only = true
@@ -136,4 +137,19 @@ resource "azurerm_function_app" "functions" {
         HASH = "${base64encode(filesha256("${var.functionapp}"))}"
         WEBSITE_RUN_FROM_PACKAGE = "https://${data.azurerm_storage_account.storage.name}.blob.core.windows.net/${azurerm_storage_container.deploy.name}/${azurerm_storage_blob.appcode.name}${data.azurerm_storage_account_sas.sas.sas}"
     }
+}
+
+
+### Application insgiths to get access to logs
+
+resource "azurerm_application_insights" "logs" {
+  name                = "memeteca-appinsights"
+  location            = "${data.azurerm_resource_group.rg.location}"
+  resource_group_name = "${data.azurerm_resource_group.rg.name}"
+  application_type    = "web"
+}
+
+
+output "name" {
+  value = var.functionapp
 }
