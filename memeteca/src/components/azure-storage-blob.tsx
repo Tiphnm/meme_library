@@ -6,9 +6,9 @@ import { BlobServiceClient, ContainerClient} from '@azure/storage-blob';
 require('dotenv').config()
 
 // THIS IS SAMPLE CODE ONLY - DON'T STORE TOKEN IN PRODUCTION CODE
-const sasToken = `sv=2020-02-10&ss=b&srt=sco&sp=rwdlacx&se=2021-05-12T22:48:25Z&st=2021-05-05T14:48:25Z&sip=80.0.0.0-90.0.0.0&spr=https,http&sig=aXjRLHJxXhDno8%2FPafDiTJUM%2Fi13qjNU%2Fo9V%2BbOx8dQ%3D` || ""; // Fill string with your SAS token
+const sasToken = process.env.REACT_APP_STORAGESASTOKEN || ""; // Fill string with your SAS token
 const containerName = `tutorial-container`;
-const storageAccountName = `memetecastorage` || ""; // Fill string with your Storage resource name
+const storageAccountName = process.env.REACT_APP_STORAGERESOURCENAME || ""; // Fill string with your Storage resource name
 // </snippet_package>
 
 // <snippet_isStorageConfigured>

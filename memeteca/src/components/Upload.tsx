@@ -49,16 +49,16 @@ const Upload = (): JSX.Element => {
 
   // display file name and image
   const DisplayImagesFromContainer = () => (
-    <div>
+    <div className="container-upload">
       <h2>Container items</h2>
       <ul className="list">
         {blobList.map((item) => {
           return (
             <li key={item}>
-              <div>
+              <div className="container-item">
                 {Path.basename(item)}
                 <br />
-                <img src={item} alt={item} height="200" />
+                <img className="img-item" src={item} alt={item} height="200" />
               </div>
             </li>
           );
