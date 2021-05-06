@@ -6,9 +6,6 @@ import * as session from "express-session"
 import { User } from './types'
 import bodyParser from "body-parser"
 
-
-let router = express.Router()
-
 const app = express();
 const PORT = 4000;
 
@@ -21,7 +18,11 @@ app.post('/login', (req,res) => {
   res.send('Express + TypeScript Server')
   res.redirect("http://localhost:3000")
 });
+ 
 
+app.get("/users", (req,res) =>  {
+ res.send(display_users())
+})
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }))
 app.post("/register", (req,res)=> {
@@ -36,18 +37,9 @@ app.post("/register", (req,res)=> {
   res.status(201).send('User created');
 } )
 
-
-
-
-
-
-
-
-
 app.listen(PORT, () => {
-  console.log(`⚡️[server]: Server is running at https://localhost:${PORT}`);
   connect()
-  display_users()
+  console.log(`⚡️[server]: Server is running at http://localhost:${PORT}`);
 });
 
 
