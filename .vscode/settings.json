@@ -1,6 +1,9 @@
 {
     "cSpell.words": [
-        "MONGOURI"
+        "MONGOURI",
+        "STORAGERESOURCENAME",
+        "STORAGESASTOKEN",
+        "uuidv"
     ],
     "azureFunctions.deploySubpath": "function",
     "azureFunctions.postDeployTask": "npm install",

@@ -1,52 +1,53 @@
-// ./src/azure-storage-blob.ts
-
-// <snippet_package>
-// THIS IS SAMPLE CODE ONLY - NOT MEANT FOR PRODUCTION USE
 import { BlobServiceClient, ContainerClient} from '@azure/storage-blob';
 require('dotenv').config()
 
-// THIS IS SAMPLE CODE ONLY - DON'T STORE TOKEN IN PRODUCTION CODE
-const sasToken = process.env.REACT_APP_STORAGESASTOKEN || ""; // Fill string with your SAS token
-const containerName = `tutorial-container`;
-const storageAccountName = process.env.REACT_APP_STORAGERESOURCENAME || ""; // Fill string with your Storage resource name
-// </snippet_package>
+/*  Config Azure Blob Storage + Container */
+const sasToken = process.env.REACT_APP_STORAGESASTOKEN || "";
+const containerName = "memes";
+const storageAccountName = process.env.REACT_APP_STORAGE_STORAGERESOURCENAME || "";
 
-// <snippet_isStorageConfigured>
-// Feature flag - disable storage feature to app if not configured
+
+
+/*  Disable upload button if the Storage is not configurated */
 export const isStorageConfigured = () => {
   return (!storageAccountName || !sasToken) ? false : true;
 }
-// </snippet_isStorageConfigured>
 
-// <snippet_getBlobsInContainer>
-// return list of blobs in container to display
+
+/*  return list of blobs in container to display */ 
+
 const getBlobsInContainer = async (containerClient: ContainerClient) => {
   const returnedBlobUrls: string[] = [];
 
   // get list of blobs in container
-  // eslint-disable-next-line
   for await (const blob of containerClient.listBlobsFlat()) {
     // if image is public, just construct URL
     returnedBlobUrls.push(
       `https://${storageAccountName}.blob.core.windows.net/${containerName}/${blob.name}`
     );
   }
-
   return returnedBlobUrls;
 }
-// </snippet_getBlobsInContainer>
 
-// <snippet_createBlobInContainer>
+
+
+/*  Create a new blob in the container */
 const createBlobInContainer = async (containerClient: ContainerClient, file: File) => {
   
   // create blobClient for container
   const blobClient = containerClient.getBlockBlobClient(file.name);
+  console.log(file)
 
   // set mimetype as determined from browser with file upload control
-  const options = { blobHTTPHeaders: { blobContentType: file.type }};
+  const options = { 
+    blobHTTPHeaders: { blobContentType: file.type },
+    metadata: {
+      hello: "world"
+    }
+  };
 
   // upload file
-  await blobClient.uploadBrowserData(file, options);
+  await blobClient.uploadData(file, options);
 }
 // </snippet_createBlobInContainer>
 

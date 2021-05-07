@@ -4,7 +4,7 @@
       "name": "myBlob",
       "type": "blobTrigger",
       "direction": "in",
-      "path": "tutorial-container/{name}",
+      "path": "memes/{name}",
       "connection": "AzureWebJobsStorage"
     }
   ],

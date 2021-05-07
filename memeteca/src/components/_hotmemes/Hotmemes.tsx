@@ -1,4 +1,5 @@
 import React, {useState, useEffect, Props} from 'react'
+import PropTypes, {InferProps} from "prop-types";
 import Meme from "../_meme/Meme"
 import axios from "axios"
 const api_url = "http://localhost:4000/memes"
@@ -11,12 +12,12 @@ type memeType = {
     url: String,
   };
 
-export default function Hotmemes(props: any) {
+export default function HotMemes (props: hotMemes) {
     const [loadingMemes, setLoadingMemes] = useState(true)
     const [memes, setMemes] = useState<any[]>([])
 
     useEffect(() => {
-        async function getData( ) {
+        async function getData()  {
             await axios.get(api_url).then( (res) => {
                 // Check if the memes arrived
                 console.log(res.data)
@@ -37,3 +38,8 @@ export default function Hotmemes(props: any) {
         </div>
     )
 }
+
+type hotMemes = {
+    loader: string 
+}
+

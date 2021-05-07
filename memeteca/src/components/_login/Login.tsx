@@ -39,7 +39,7 @@ export default function Login({ setToken }: any) {
         </label>
         <div>
          {/*  <button type="submit" onClick={ e => {e.preventDefault(); handleSubmit()}}>Submit</button>  */}
-         <button type="submit" onClick={ handleSubmit}>Submit</button>
+         <button type="submit" onClick={ e => {e.preventDefault(); handleSubmit()}}>Submit</button>
         </div>
       </form>
     </div>
