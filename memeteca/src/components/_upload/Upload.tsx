@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Path from 'path';
-import troll from '../assets/img/troll.png'
-import uploadFileToBlob, { isStorageConfigured } from './azure-storage-blob';
+import troll from '../../assets/img/troll.png'
+import uploadFileToBlob, { isStorageConfigured } from '../azure-storage-blob';
 import './Upload.css'
 
 const storageConfigured = isStorageConfigured();

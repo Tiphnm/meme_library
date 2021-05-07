@@ -1,8 +1,10 @@
 import React from 'react'
-import meme from '../assets/img/troll.png'
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"
+import meme from '../../assets/img/troll.png'
 
 export default function Header() {
     return (
+        <Router>
         <div className="container-header">
                 <div></div>
                 <div className="center-header">
@@ -20,6 +22,8 @@ export default function Header() {
                 </div>
         </div>
         
+        
+    </Router>
     )
 
 }
