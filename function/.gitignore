@@ -5,6 +5,7 @@ csx
 edge
 Publish
 build/
+
 *.user
 *.suo
 *.cscfg

@@ -39,3 +39,9 @@ button:hover{
     color: #000000;
     background-color: #FFFFFF;
 }
+
+.login-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
