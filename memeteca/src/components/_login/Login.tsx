@@ -17,8 +17,8 @@ export default function Login({ setToken }: any) {
   const [username, setUserName] = useState();
   const [password, setPassword] = useState();
 
-  const handleSubmit = async (e: { preventDefault: () => void; }) => {
-    e.preventDefault();
+  const handleSubmit = async  ()=> {
+    
     const token = await loginUser({
       username,
       password
@@ -28,7 +28,7 @@ export default function Login({ setToken }: any) {
 
   return (
     <div className="login-wrapper">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={ handleSubmit }>
         <label>
           <p>Username</p>
           <input type="text" />
@@ -38,7 +38,8 @@ export default function Login({ setToken }: any) {
           <input type="password" />
         </label>
         <div>
-          <button type="submit">Submit</button>
+         {/*  <button type="submit" onClick={ e => {e.preventDefault(); handleSubmit()}}>Submit</button>  */}
+         <button type="submit" onClick={ handleSubmit}>Submit</button>
         </div>
       </form>
     </div>
