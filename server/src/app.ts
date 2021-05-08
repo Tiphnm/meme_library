@@ -9,6 +9,8 @@ import jwt from "jsonwebtoken"
 import { send } from "process";
 
 
+
+
 const app = express();
 const PORT = 4000;
 app.use(bodyParser.json())
@@ -25,6 +27,9 @@ app.post('/login', (req, res) => {
   res.send('Express + TypeScript Server')
   res.redirect("http://localhost:3000")
 });
+
+
+
 
 const users = [
   { id: 1, name: "jojo", mail: "jojo@simplon.fr", password: "12345678" },
@@ -59,7 +64,6 @@ app.post("/login2", (req, res) => {
   }
   console.log(mail, password);
   res.send("wrong user")
-
 
 })
 
@@ -100,7 +104,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }))
 app.post("/register",)
 
-app.get("/memes", getMemes)
+
 
 app.listen(PORT, () => {
   connect()
