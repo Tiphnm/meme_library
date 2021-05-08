@@ -131,6 +131,7 @@ resource "azurerm_function_app" "functions" {
 
     app_settings = {
         https_only = true
+        FUNCTIONS_EXTENSION_VERSION=3
         FUNCTIONS_WORKER_RUNTIME = "node"
         WEBSITE_NODE_DEFAULT_VERSION = "~14"
         FUNCTION_APP_EDIT_MODE = "readonly"
