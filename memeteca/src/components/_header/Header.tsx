@@ -26,7 +26,7 @@ export default function Header(props: any) {
                             REGISTER
                         </button>
                     <Link to="/login">
-                        <button className="button button3">
+                        <button className="button button2">
                             LOGIN
                         </button>
                     </Link>
