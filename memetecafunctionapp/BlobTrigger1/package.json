@@ -1,0 +1,28 @@
+{
+  "name": "",
+  "version": "",
+  "description": "",
+  "scripts": {
+    "test": "echo \"No tests yet...\"",
+    "clean": "rimraf build",
+    "build:prune": "npm prune --production",
+    "prebuild:zip": "mkdirp --mode=0700 build",
+    "build:zip": "jszip-cli",
+    "build": "run-s clean build:zip"
+  },
+  "author": "",
+  "dependencies": {
+    "bson": "^4.3.0",
+    "dotenv": "^9.0.0",
+    "mongodb": "^3.6.6",
+    "mongoose": "^5.12.7",
+    "uuid": "^8.3.2",
+    "uuidv4": "^6.2.7"
+  },
+  "devDependencies": {
+    "@ffflorian/jszip-cli": "^3.1.0",
+    "mkdirp": "^1.0.4",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2"
+  }
+}

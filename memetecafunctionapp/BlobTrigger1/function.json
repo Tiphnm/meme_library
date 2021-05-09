@@ -1,0 +1,19 @@
+﻿{
+  "bindings": [
+    {
+      "name": "myBlob",
+      "path": "memes/{name}",
+      "connection": "AzureWebJobsStorage",
+      "direction": "in",
+      "type": "blobTrigger"
+    },
+    {
+      "name": "outputDocument",
+      "direction": "out",
+      "type": "cosmosDB",
+      "databaseName": "outDatabase",
+      "collectionName": "MyCollection",
+      "connectionStringSetting": "memetecacosmos_DOCUMENTDB"
+    }
+  ]
+}
