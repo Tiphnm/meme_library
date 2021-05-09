@@ -1,4 +1,5 @@
 import React, {SyntheticEvent, useState } from 'react';
+import axios from "axios"
 import './Login.css';
 import * as cors from 'cors';
 
@@ -6,7 +7,7 @@ import * as cors from 'cors';
 export default function Login() {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-
+/*
   const submit = async (e: SyntheticEvent) => {
     e.preventDefault();
     await fetch('http://localhost:4000/login', {
@@ -19,6 +20,19 @@ export default function Login() {
       })
     })
   }
+*/ 
+
+async function submit() {
+  const url = "http://localhost:4000/login"
+  await axios.post(url, {
+    headers:{'Content-Type' : 'application/json'},
+    credentials: {
+      username,
+      password
+    }
+  })
+}
+
 
   return (
     <div className="login-wrapper">
@@ -30,7 +44,7 @@ export default function Login() {
         </div>
         <div className="form_password">
           <h3>Password</h3>
-          <input id="inputPassword" placeholder="Password" type="Password" onChange={e => setPassword(e.target.value)}
+          <input id="inputPassword" placeholder="Password" type="text" onChange={e => setPassword(e.target.value)}
           />
         </div>
         <div className="form_button">
