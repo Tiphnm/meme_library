@@ -104,7 +104,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }))
 app.post("/register",)
 
-
+app.get("/memes", getMemes)
 
 app.listen(PORT, () => {
   connect()
