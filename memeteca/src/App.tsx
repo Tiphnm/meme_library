@@ -40,7 +40,7 @@ function App() {
             </Route>
             
             <Route path="/login">
-             {/* <Login /> */  } 
+              <Login />
             </Route>
 
             {/* Hot memes principal section  */}

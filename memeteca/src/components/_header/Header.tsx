@@ -2,6 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"
 import meme from '../../assets/img/troll.png'
 
+
 export default function Header(props: any) {
     return (
             <div className="container-header">
@@ -24,6 +25,12 @@ export default function Header(props: any) {
                         <button className="button button2">
                             REGISTER
                         </button>
+                    <Link to="/login">
+                        <button className="button button2">
+                            LOGIN
+                        </button>
+                    </Link>
+                    
                 </div>
             </div>
     )
