@@ -1,11 +1,6 @@
-import { AzureFunction, Context } from "@azure/functions"
-import { uuid } from "uuidv4";
-import { config } from "dotenv"
-import mongoose = require("mongoose");
+const mongoose = require("mongoose")
 
-config()
-
-const blobTrigger: AzureFunction = async function (context: Context, myBlob: any): Promise<void> {
+module.exports = async function blobTrigger (context , myBlob ) {
     
     const collection = "_memes" 
     
@@ -24,16 +19,14 @@ const blobTrigger: AzureFunction = async function (context: Context, myBlob: any
     //this is my test
 
     const memeSchema = new mongoose.Schema({
-        _id: String,
         name: String,
-        description: String,
+        description: Object,
         url: String
     })
 
     const Meme = mongoose.model(collection, memeSchema)
 
     const mySuperNewMeme = new Meme ({
-        _id: uuid(),
         name: context.bindingData.name,
         description: context.bindingData.metadata,
         url: context.bindingData.uri
@@ -53,5 +46,3 @@ const blobTrigger: AzureFunction = async function (context: Context, myBlob: any
     })
 
 };
-
-export default blobTrigger;

@@ -2,9 +2,9 @@ memeteca-test/
 node_modules/
 .env
 memeteca-test
-
+function/
 server/dist/
-
+memetecafunctionapp/local.settings.json
 
 # Created by https://www.toptal.com/developers/gitignore/api/terraform
 # Edit at https://www.toptal.com/developers/gitignore?templates=terraform

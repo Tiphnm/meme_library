@@ -1,0 +1,14 @@
+﻿{
+  "bindings": [
+    {
+      "type": "cosmosDBTrigger",
+      "name": "documents",
+      "direction": "in",
+      "leaseCollectionName": "leases",
+      "connectionStringSetting": "memetecacosmos_DOCUMENTDB",
+      "databaseName": "memesDB",
+      "collectionName": "memes3",
+      "createLeaseCollectionIfNotExists": true
+    }
+  ]
+}
