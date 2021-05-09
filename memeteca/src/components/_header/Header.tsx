@@ -21,10 +21,12 @@ export default function Header(props: any) {
                         <button className="button button1"> 
                             UPLOAD
                         </button>
-                    </Link>
+                        </Link>
+                    <Link to="/register">
                         <button className="button button2">
                             REGISTER
                         </button>
+                        </Link>
                     <Link to="/login">
                         <button className="button button2">
                             LOGIN

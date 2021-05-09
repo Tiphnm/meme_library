@@ -112,7 +112,15 @@ app.get("/users", (req, res) => {
 })
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }))
-app.post("/register",)
+
+
+app.post("/register", (req, res) => {
+
+  const username = req.body.credentials.username
+  const password = req.body.credentials.password
+
+  register_user(username,password)
+})
 
 
 app.get("/memes", getMemes)

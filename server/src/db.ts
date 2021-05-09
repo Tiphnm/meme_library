@@ -5,13 +5,15 @@ import { type } from 'os'
 const MONGOURI: string = process.env.MONGOURI
 const collection = "db1"
 const userCollection = "users"
-
+const uniqueValidator = require('mongoose-unique-validator')
 const SALT_WORK_FACTOR = 10;
 
 const userSchema = new mongoose.Schema({
-    username: { type: String, required: true, index: { unique: true } },
+    username: { type: String, required: true, index: true, unique: true  },
     password: { type: String, required: true }
 })
+
+userSchema.plugin(uniqueValidator, {message: 'is already taken.'})
 
 const User = mongoose.model(userCollection, userSchema)
 /// 
@@ -40,6 +42,17 @@ async function display_users(){
 userSchema.pre( save, function(next) {
     
 })*/
+/*
+try {
+    let data = await User.findOne({username: user});
+    if(!data) {
+      throw new Error('no document found');
+    }
+    return data;
+} catch (error) {
+    return 0;
+}
+*/
 
 async function register_user(getUser,getPass) {
  const newUser = new User({
@@ -47,10 +60,21 @@ async function register_user(getUser,getPass) {
      password: getPass
  })
 
-newUser.save( (err, myUser) => {
-    if (err) return console.error(err)
-    console.log("New user registered")
-})
+ try {
+    let data = await newUser.save( (err, myUser) => {
+        if (err) {
+
+            throw new Error('User already existe') 
+        }
+        //////
+        console.log(myUser)
+        
+        console.log("New user registered")   
+    })
+}  catch (error) {
+
+    return 0
+}
 }
 
 
