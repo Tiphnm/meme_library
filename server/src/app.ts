@@ -7,7 +7,10 @@ import bodyParser from "body-parser"
 import cors from "cors"
 import jwt from "jsonwebtoken"
 import { send } from "process";
+
 const key_jwt = process.env.SECRET_TOKEN
+
+
 const app = express();
 const PORT = 4000;
 app.use(bodyParser.json())
@@ -18,13 +21,6 @@ app.get('/', (req, res) => {
 });
 
 app.use(cors())
-
-const users = [
-  { id: 1, name: "jojo", mail: "jojo@simplon.fr", password: "12345678" },
-  { id: 2, name: "tiphaine", mail: "tiphaine@simplon.fr", password: "24356728" },
-  { id: 3, name: "josh", mail: "josh@simplon.fr", password: "837393636" },
-  { id: 4, name: "Marc", mail: "marc@simplon.fr", password: "983963257" },
-]
 
 app.post('/login', async (req, res) => {
 

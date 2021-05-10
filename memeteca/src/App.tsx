@@ -16,12 +16,11 @@ import './App.css';
 import Register from './components/_register/Register';
 
 function App() {
-   /*
-  const { token, setToken } = useToken();
 
-  if (!token) {
-    return <Login setToken={setToken} />
-  } */ 
+  const [token, setToken ] = useState();
+
+
+ /* */
 
   return (
     <div className="App">
@@ -49,10 +48,9 @@ function App() {
             </Route>
 
             {/* Hot memes principal section  */}
+            
             <Route path="/home">
-              
-              <HotMemes loader={loaderBlack} />
-             
+              <HotMemes loader={loaderBlack} />  
             </Route>
            
             {/* Upload */}
