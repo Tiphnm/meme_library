@@ -1,10 +1,15 @@
 import React, {SyntheticEvent, useState } from 'react';
+import PropTypes from 'prop-types';
 import axios from "axios"
 import './Login.css';
 import * as cors from 'cors';
+type Props ={
+  setToken?: () => any
+}
 
-
-export default function Login() {
+export default function Login(props: Props) {
+  {props.setToken}
+  
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 /*

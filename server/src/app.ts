@@ -7,7 +7,10 @@ import bodyParser from "body-parser"
 import cors from "cors"
 import jwt from "jsonwebtoken"
 import { send } from "process";
+
 const key_jwt = process.env.SECRET_TOKEN
+
+
 const app = express();
 const PORT = 4000;
 app.use(bodyParser.json())
@@ -18,6 +21,12 @@ app.get('/', (req, res) => {
 });
 
 app.use(cors())
+
+app.post('/login', (req, res) => {
+  console.log("User is trying to log")
+  res.send('Express + TypeScript Server')
+  res.redirect("http://localhost:3000")
+});
 
 const users = [
   { id: 1, name: "jojo", mail: "jojo@simplon.fr", password: "12345678" },
@@ -123,7 +132,7 @@ app.post("/register", (req, res) => {
 })
 
 
-app.get("/memes", getMemes)
+
 
 app.listen(PORT, () => {
   connect()
