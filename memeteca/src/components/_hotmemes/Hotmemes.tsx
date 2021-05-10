@@ -34,7 +34,7 @@ export default function HotMemes (props: hotMemes) {
         <div>
            {loadingMemes? <img alt="loading..." src={props.loader}></img>:
             memes.map( (meme) => {
-              return  <Meme data={meme} key={meme.id} />           })}
+              return  <Meme data={meme} key={meme._id} />           })}
         </div>
     )
 }

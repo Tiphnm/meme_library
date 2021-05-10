@@ -49,3 +49,7 @@ button:hover{
 .form_password{
     padding-top: 2rem;
 }
+
+.title-login{
+    font-family: 'Rammetto One'
+}

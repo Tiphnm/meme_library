@@ -1,18 +1,21 @@
 import 'dotenv/config'
 import * as bcrypt from "bcrypt"
-import mongoose from "mongoose"
+import mongoose, { Mongoose } from "mongoose"
+import { type } from 'os'
 const MONGOURI: string = process.env.MONGOURI
 const collection = "db1"
-
+const userCollection = "users"
+const uniqueValidator = require('mongoose-unique-validator')
 const SALT_WORK_FACTOR = 10;
 
 const userSchema = new mongoose.Schema({
-    username: { type: String, required: true, index: { unique: true } },
+    username: { type: String, required: true, index: true, unique: true  },
     password: { type: String, required: true }
 })
 
-const User = mongoose.model(collection, userSchema)
+userSchema.plugin(uniqueValidator, {message: 'is already taken.'})
 
+const User = mongoose.model(userCollection, userSchema)
 /// 
 async  function connect() {
     console.log("Connecting")
@@ -28,8 +31,7 @@ async  function connect() {
     
 }
 
-async function display_users(){
-    
+async function display_users(){  
     User.find((err, res) => {
         if (err) return console.log(err)
         console.log(res)
@@ -40,6 +42,17 @@ async function display_users(){
 userSchema.pre( save, function(next) {
     
 })*/
+/*
+try {
+    let data = await User.findOne({username: user});
+    if(!data) {
+      throw new Error('no document found');
+    }
+    return data;
+} catch (error) {
+    return 0;
+}
+*/
 
 async function register_user(getUser,getPass) {
  const newUser = new User({
@@ -47,9 +60,44 @@ async function register_user(getUser,getPass) {
      password: getPass
  })
 
-newUser.save( (err, myUser) => {
-    if (err) return console.error(err)
-    console.log("New user registered")
-})
+ try {
+    let data = await newUser.save( (err, myUser) => {
+        if (err) {
+
+            throw new Error('User already existe') 
+        }
+        //////
+        console.log(myUser)
+        
+        console.log("New user registered")   
+    })
+}  catch (error) {
+
+    return 0
 }
-export {connect, display_users, register_user} 
+}
+
+
+async function loginUser(user: string, pass: string) {
+interface myUser {
+    username: String,
+    password: String
+}
+const logUser = new User({
+    username: user,
+    password: pass
+})
+
+try {
+    let data = await User.findOne({username: user});
+    if(!data) {
+      throw new Error('no document found');
+    }
+    return data;
+} catch (error) {
+    return 0;
+}
+}
+
+
+export {loginUser, connect, display_users, register_user} 

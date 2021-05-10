@@ -13,14 +13,14 @@ import Login from './components/_login/Login';
 import useToken from './components/useToken';
 
 import './App.css';
+import Register from './components/_register/Register';
 
 function App() {
-   /*
-  const { token, setToken } = useToken();
 
-  if (!token) {
-    return <Login setToken={setToken} />
-  } */ 
+  const [token, setToken ] = useState();
+
+
+ /* */
 
   return (
     <div className="App">
@@ -28,7 +28,7 @@ function App() {
 
 
     {/* Header and Nav Bar */}          
-      <Header/>
+      <Header />
       
       <div className="wrapper">
         <h1>Memeteca hottest memes</h1>
@@ -41,6 +41,10 @@ function App() {
             
             <Route path="/login">
               <Login />
+            </Route>
+
+            <Route path="/register">
+              <Register />
             </Route>
 
             {/* Hot memes principal section  */}
