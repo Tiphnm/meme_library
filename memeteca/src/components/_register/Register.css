@@ -6,7 +6,6 @@ form{
     font-family: 'Press Start 2P', cursive;
     color: white;
     padding: 3%;
-    margin-top: 10%;
     max-width: 700px;
     width: 100%;
     margin-right: auto;
@@ -35,6 +34,9 @@ button{
     border: 2px; 
 }
 
-.title-register{
-    
+.container-register h1{
+    font-family: 'Rammetto One', cursive;
 }
+
+
+
