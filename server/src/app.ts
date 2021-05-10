@@ -51,7 +51,7 @@ app.post('/login', async (req, res) => {
   }
   validateUser(result)
 });
-
+/*
 //route post pour reccuperer les users et passwords et checker
 app.post("/login2", (req, res) => {
   const { mail, password } = req.body
@@ -72,7 +72,7 @@ app.post("/login2", (req, res) => {
   res.send("wrong user")
 
 })
-
+*/
 //authentification
 const authentification = (req, res, next) => {
   try {
