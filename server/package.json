@@ -23,7 +23,8 @@
     "jsonwebtoken": "^8.5.1",
     "koa-bodyparser": "^4.3.0",
     "mongoose": "^5.12.7",
-    "mongoose-unique-validator": "^2.0.3"
+    "mongoose-unique-validator": "^2.0.3",
+    "ts-node-dev": "^1.1.6"
   },
   "devDependencies": {
     "@types/cors": "^2.8.10",

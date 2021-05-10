@@ -102,6 +102,8 @@ app.post("/privee", authentification,(req, res)=> {
   
 })
 
+app.get("/memes", getMemes)
+
 
 app.get("/users", (req, res) => {
   res.send(display_users())
