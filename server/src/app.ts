@@ -10,7 +10,6 @@ import { send } from "process";
 
 const key_jwt = process.env.SECRET_TOKEN
 
-
 const app = express();
 const PORT = 4000;
 app.use(bodyParser.json())
@@ -53,25 +52,25 @@ app.post('/login', async (req, res) => {
 });
 
 //route post pour reccuperer les users et passwords et checker
-app.post("/login2", (req, res) => {
-  const { mail, password } = req.body
-  for (let i = 0; i < users.length; i++) {
-    let user = users[i]
-    if (user.mail == mail) {
-      if (user.password == password) {
-        const token = jwt.sign({ id: user.id }, key_jwt);
-        res.send(token)
-      } else {
-        res.send("wrong password")
-      }
-      return
-    }
+// app.post("/login2", (req, res) => {
+//   const { mail, password } = req.body
+//   for (let i = 0; i < users.length; i++) {
+//     let user = users[i]
+//     if (user.mail == mail) {
+//       if (user.password == password) {
+//         const token = jwt.sign({ id: user.id }, key_jwt);
+//         res.send(token)
+//       } else {
+//         res.send("wrong password")
+//       }
+//       return
+//     }
 
-  }
-  console.log(mail, password);
-  res.send("wrong user")
+//   }
+//   console.log(mail, password);
+//   res.send("wrong user")
 
-})
+// })
 
 //authentification
 const authentification = (req, res, next) => {
