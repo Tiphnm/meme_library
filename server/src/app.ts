@@ -22,19 +22,6 @@ app.get('/', (req, res) => {
 
 app.use(cors())
 
-app.post('/login', (req, res) => {
-  console.log("User is trying to log")
-  res.send('Express + TypeScript Server')
-  res.redirect("http://localhost:3000")
-});
-
-const users = [
-  { id: 1, name: "jojo", mail: "jojo@simplon.fr", password: "12345678" },
-  { id: 2, name: "tiphaine", mail: "tiphaine@simplon.fr", password: "24356728" },
-  { id: 3, name: "josh", mail: "josh@simplon.fr", password: "837393636" },
-  { id: 4, name: "Marc", mail: "marc@simplon.fr", password: "983963257" },
-]
-
 app.post('/login', async (req, res) => {
 
   const username = req.body.credentials.username
@@ -132,7 +119,7 @@ app.post("/register", (req, res) => {
 })
 
 
-
+app.get("/memes", getMemes)
 
 app.listen(PORT, () => {
   connect()

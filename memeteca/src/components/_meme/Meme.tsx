@@ -1,5 +1,5 @@
 import React, { Key } from 'react'
-import {newMeme} from  "../../types/types"
+import {newMeme} from  "../../typescript/types"
 
 export default function Meme(props: newMeme) {
     return (
