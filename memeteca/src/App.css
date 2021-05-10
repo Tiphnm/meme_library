@@ -9,3 +9,9 @@ a {
   padding: inherit;
   margin: inherit;
 }
+
+h1 {
+  font-family: 'Press Start 2P', cursive;
+  color: white;
+  padding: 20px;
+}
