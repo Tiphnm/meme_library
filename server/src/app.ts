@@ -1,4 +1,4 @@
-import { connect, display_users, register_user } from "./db"
+import { connect, display_users, register_user, loginUser } from "./db"
 import getMemes from "./Routes/hot_display"
 import * as registerRouter from './Routes/register';
 import express from "express"
@@ -7,10 +7,7 @@ import bodyParser from "body-parser"
 import cors from "cors"
 import jwt from "jsonwebtoken"
 import { send } from "process";
-
-
-
-
+const key_jwt = process.env.SECRET_TOKEN
 const app = express();
 const PORT = 4000;
 app.use(bodyParser.json())
@@ -22,15 +19,6 @@ app.get('/', (req, res) => {
 
 app.use(cors())
 
-app.post('/login', (req, res) => {
-  console.log("User is trying to log")
-  res.send('Express + TypeScript Server')
-  res.redirect("http://localhost:3000")
-});
-
-
-
-
 const users = [
   { id: 1, name: "jojo", mail: "jojo@simplon.fr", password: "12345678" },
   { id: 2, name: "tiphaine", mail: "tiphaine@simplon.fr", password: "24356728" },
@@ -38,12 +26,34 @@ const users = [
   { id: 4, name: "Marc", mail: "marc@simplon.fr", password: "983963257" },
 ]
 
-const key_jwt = "shhhhh"
+app.post('/login', async (req, res) => {
 
-app.use('/login1', (req, res) => {
-  res.send({
-    token: 'test123'
-  });
+  const username = req.body.credentials.username
+  const password = req.body.credentials.password
+
+  const result = await loginUser(username,password)
+
+  function validateUser(result) {
+
+    if (result === 0) {
+      console.log("User doesn't exist")
+      return 0
+    }
+
+    if (password === result.password) {
+      /*  Login Success */
+      console.log("Login Success")
+      const token = jwt.sign({ id: result._id }, key_jwt);
+      res.send(token)
+      console.log(token)
+      return 1 
+
+    } else {
+      console.log("Password not matching ")
+      return 0
+    }
+  }
+  validateUser(result)
 });
 
 //route post pour reccuperer les users et passwords et checker
@@ -102,9 +112,18 @@ app.get("/users", (req, res) => {
 })
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }))
-app.post("/register",)
 
 
+app.post("/register", (req, res) => {
+
+  const username = req.body.credentials.username
+  const password = req.body.credentials.password
+
+  register_user(username,password)
+})
+
+
+app.get("/memes", getMemes)
 
 app.listen(PORT, () => {
   connect()
