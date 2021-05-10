@@ -32,7 +32,7 @@ function App() {
       
       <div className="wrapper">
         <h1>Memeteca hottest memes</h1>
-          <Link to="/upload"> test </Link>
+          <Link to="/upload"></Link>
           <Switch>
             
             <Route exact path="/">
