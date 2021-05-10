@@ -48,10 +48,9 @@ function App() {
             </Route>
 
             {/* Hot memes principal section  */}
+            
             <Route path="/home">
-              
-              <HotMemes loader={loaderBlack} />
-             
+              <HotMemes loader={loaderBlack} />  
             </Route>
            
             {/* Upload */}

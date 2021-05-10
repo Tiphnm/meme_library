@@ -132,7 +132,7 @@ app.post("/register", (req, res) => {
 })
 
 
-
+app.get("/memes", getMemes)
 
 app.listen(PORT, () => {
   connect()

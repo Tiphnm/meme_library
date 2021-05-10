@@ -11,8 +11,8 @@ const memeSchema = new mongoose.Schema({
 
 /* Create a mongoose model that connects the Schema with the collection */
 const collection = "_memes"
-const Meme = mongoose.model(collection, memeSchema)
 
+let Meme = mongoose.models.Meme  || mongoose.model(collection, memeSchema)
 
 let All_memes 
 
