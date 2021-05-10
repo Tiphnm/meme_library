@@ -15,7 +15,7 @@ import useToken from './components/useToken';
 import './App.css';
 import Register from './components/_register/Register';
 
-function App() {
+function App(props:any) {
 
   const [token, setToken ] = useState();
 
@@ -28,11 +28,10 @@ function App() {
 
 
     {/* Header and Nav Bar */}          
-      <Header />
+      <Header path={props.location} />
       
       <div className="wrapper">
-        <h1>Memeteca hottest memes</h1>
-          <Link to="/upload"> test </Link>
+        
           <Switch>
             
             <Route exact path="/">
