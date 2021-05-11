@@ -15,9 +15,8 @@ export default function Header(props: any) {
           </a>
         </div>
       </div>
-      {/*  Buttons  */}
       <div className="button-container">
-          {props.option=="home" ? <><Hbutton name="REGISTER" link="/register"/>  <Hbutton name="UPLOAD" link="/upload"/> <Hbutton name="UPLOAD" link="/upload"/></> : null}
+          {props.option=="home" ? <><Hbutton name="REGISTER" link="/register"/>  <Hbutton name="UPLOAD" link="/upload"/> <Hbutton name="LOGIN" link="/login"/> </> : null}
           {props.option == "register"  ? <><Hbutton name="UPLOAD" link="/upload"/> <Hbutton name="LOGIN" link="/login"/> </>: null}
           {/* {props.option== "upload" ?  <Hbutton name="LOGIN" link="/login"/> : null} */}
           {props.option== "login" ?  <Hbutton name="UPLOAD" link="/upload"/> : null}
