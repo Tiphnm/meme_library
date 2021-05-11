@@ -1,35 +1,40 @@
-import { connect, display_users, register_user, loginUser } from "./db"
+import { connect, display_users, register_user, loginUser} from "./db"
 import getMemes from "./Routes/hot_display"
+import deleteMemes from "./Routes/deleteMeme"
+import {ResultUser} from "./types"
 import * as registerRouter from './Routes/register';
 import express from "express"
 import 'dotenv/config'
 import bodyParser from "body-parser"
 import cors from "cors"
 import jwt from "jsonwebtoken"
-import { send } from "process";
+
 
 const key_jwt = process.env.SECRET_TOKEN
-
-const app = express();
 const PORT = 4000;
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true }))
+const app = express();
 
+/* BODY PARSER */ 
+app.use(express.json({}))
+app.use(express.urlencoded())
+
+/* CORS */
+app.use(cors())
+
+/* Home Route */ 
 app.get('/', (req, res) => {
   res.send('Express + TypeScript Server')
 });
 
-app.use(cors())
-
+/* Login Route */
 app.post('/login', async (req, res) => {
 
   const username = req.body.credentials.username
   const password = req.body.credentials.password
-
   const result = await loginUser(username,password)
+  console.log("result is:" + result)
 
   function validateUser(result) {
-
     if (result === 0) {
       console.log("User doesn't exist")
       return 0
@@ -50,6 +55,7 @@ app.post('/login', async (req, res) => {
   }
   validateUser(result)
 });
+
 /*
 //route post pour reccuperer les users et passwords et checker
 /*
@@ -89,41 +95,42 @@ const authentification = (req, res, next) => {
   }
 }
 //route qui redirige vers le profil
-app.get("/profil", authentification,(req, res) => {
+app.get("/profile", authentification,(req, res) => {
 
-  console.log("profil")
-  res.send("profil")
+  console.log("profile")
+  res.send("profile")
 
 })
 
 //exemple de route
-app.post("/privee", authentification,(req, res)=> {
-  console.log("privee");
-  res.send("privee")
+app.post("/private", authentification,(req, res)=> {
+  console.log("private");
+  res.send("private")
   
 })
 
-app.get("/memes", getMemes)
 
-
+/* Get all users */ 
 app.get("/users", (req, res) => {
   res.send(display_users())
 })
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }))
 
 
+/* Register User Route */ 
 app.post("/register", (req, res) => {
-
   const username = req.body.credentials.username
   const password = req.body.credentials.password
-
   register_user(username,password)
 })
 
-
+/* Get memes route */
 app.get("/memes", getMemes)
 
+/* DeleteMemes Route */
+app.delete("/deletememe", deleteMemes)
+
+
+/* Server listening */ 
 app.listen(PORT, () => {
   connect()
   console.log(`⚡️[server]: Server is running at http://localhost:${PORT}`);
