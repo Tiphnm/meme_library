@@ -53,6 +53,7 @@ app.post('/login', async (req, res) => {
 });
 /*
 //route post pour reccuperer les users et passwords et checker
+/*
 app.post("/login2", (req, res) => {
   const { mail, password } = req.body
   for (let i = 0; i < users.length; i++) {
@@ -74,6 +75,7 @@ app.post("/login2", (req, res) => {
 })
 */
 //authentification
+
 const authentification = (req, res, next) => {
   try {
     const { token } = req.query

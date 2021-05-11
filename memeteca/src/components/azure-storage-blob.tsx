@@ -1,18 +1,14 @@
 import { BlobServiceClient, ContainerClient} from '@azure/storage-blob';
 require('dotenv').config()
-
 /*  Config Azure Blob Storage + Container */
 const sasToken = process.env.REACT_APP_STORAGESASTOKEN || "";
 const containerName = "memes";
 const storageAccountName = process.env.REACT_APP_STORAGE_STORAGERESOURCENAME || "";
 
-
-
 /*  Disable upload button if the Storage is not configurated */
 export const isStorageConfigured = () => {
   return (!storageAccountName || !sasToken) ? false : true;
 }
-
 
 /*  return list of blobs in container to display */ 
 
@@ -28,8 +24,6 @@ const getBlobsInContainer = async (containerClient: ContainerClient) => {
   }
   return returnedBlobUrls;
 }
-
-
 
 /*  Create a new blob in the container */
 const createBlobInContainer = async (containerClient: ContainerClient, file: File) => {
@@ -72,6 +66,4 @@ const uploadFileToBlob = async (file: File | null): Promise<string[]> => {
   // get list of blobs in container
   return getBlobsInContainer(containerClient);
 };
-// </snippet_uploadFileToBlob>
-
 export default uploadFileToBlob;
