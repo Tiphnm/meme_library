@@ -5,11 +5,10 @@ import Hbutton from "./Hbutton";
 import "./Header.css"
 
 export default function Header(props: any) {
-
   return (
     <div className="container-header">
       <div className="center-header">
-        <img src={meme} alt="meme-img" />
+        <img src={meme} alt="meme-img"/>
         <div className="title-header">
           <a href="/">
             <h1>MEMETECA</h1>
@@ -18,13 +17,10 @@ export default function Header(props: any) {
       </div>
       {/*  Buttons  */}
       <div className="button-container">
-
-          <Hbutton name="UPLOAD" link="/upload" />
-
-          <Hbutton name="REGISTER" link="/register" />
-
-          <Hbutton name="LOGIN" link="/login" />
-          
+          {props.option=="home" ? <><Hbutton name="REGISTER" link="/register"/>  <Hbutton name="UPLOAD" link="/upload"/> <Hbutton name="UPLOAD" link="/upload"/></> : null}
+          {props.option == "register"  ? <><Hbutton name="UPLOAD" link="/upload"/> <Hbutton name="LOGIN" link="/login"/> </>: null}
+          {/* {props.option== "upload" ?  <Hbutton name="LOGIN" link="/login"/> : null} */}
+          {props.option== "login" ?  <Hbutton name="UPLOAD" link="/upload"/> : null}
       </div>
     </div>
   );

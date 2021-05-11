@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Header from '../_header/Header'
 import axios from "axios"
 import './Register.css'
 
@@ -20,6 +21,8 @@ function Register() {
     }
 
     return (
+        <>
+        <Header option="register" />
         <div className="container-register">
             <h1 className = "title">Register Form</h1>
             <br />
@@ -37,6 +40,7 @@ function Register() {
                 </div>
             </form>
         </div>
+        </>
     )
 }
 

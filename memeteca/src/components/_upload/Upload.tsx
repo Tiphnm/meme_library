@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Path from 'path';
 import troll from '../../assets/img/troll.png'
+import Header from '../_header/Header'
 import uploadFileToBlob, { isStorageConfigured } from '../azure-storage-blob';
 import { BrowserRouter as Router, Switch, Route, Link, Redirect, useHistory } from "react-router-dom"
 import './Upload.css'
@@ -72,7 +73,9 @@ const isLogged = false
   );
   return ( 
     <>
+      <Header option="upload"/>
       <div className="container">
+        
         <div className="container-aside">
           <h1>Popular</h1>
           <ul>

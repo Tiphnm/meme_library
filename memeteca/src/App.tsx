@@ -38,7 +38,8 @@ function App(props:any) {
         {/* Header and Nav Bar */}
     <Router>
     {/* Header and Nav Bar */}          
-      <Header path={props.location} history={history} />
+  
+  
       
       <div className="wrapper">
 
@@ -57,6 +58,7 @@ function App(props:any) {
             {/* Hot memes principal section  */}
 
             <Route path="/home">
+              <Header option="home" />
               <HotMemes loader={loaderBlack} />
             </Route>
 

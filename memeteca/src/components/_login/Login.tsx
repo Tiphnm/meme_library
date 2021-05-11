@@ -2,6 +2,7 @@ import React, {SyntheticEvent, useState } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link, Redirect, useHistory } from "react-router-dom"
 import PropTypes from 'prop-types';
 import axios, { AxiosResponse } from "axios"
+import Header from '../_header/Header'
 import './Login.css';
 import * as cors from 'cors';
 
@@ -36,6 +37,8 @@ async function handleSubmit(e: React.FormEvent) {
 }
 
   return (
+    <>
+    <Header option="login"/>
     <div className="login-wrapper">
       <br></br>
       <h1 className="title">LOGIN FORM </h1>
@@ -56,5 +59,6 @@ async function handleSubmit(e: React.FormEvent) {
         </div>
       </form>
     </div>
+    </>
   )
 }
