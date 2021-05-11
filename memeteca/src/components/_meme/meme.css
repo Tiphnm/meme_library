@@ -28,7 +28,6 @@ body{
     justify-content: center;
     color: white;
     line-height: 1rem;
-    padding: 10px;
 
 }
 button{
@@ -42,7 +41,7 @@ button{
 }
 
 .far {
-    width:8rem;
+    width:4rem;
     color:white;
 }
 
@@ -53,5 +52,6 @@ button{
 
 .like_button {
    margin: 10px;
+   max-width: fit-content;
 }
 
