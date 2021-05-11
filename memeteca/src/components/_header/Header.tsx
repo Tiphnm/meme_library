@@ -1,38 +1,30 @@
-import React from 'react'
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"
-import meme from '../../assets/img/troll.png'
-
+import React from "react";
+import { BrowserRouter as Router, Switch, Route, Link, useHistory } from "react-router-dom";
+import meme from "../../assets/img/troll.png";
+import Hbutton from "./Hbutton";
 
 export default function Header(props: any) {
-    return (
-            <div className="container-header">
-                <div className="center-header">
-                 
-                        <img src={meme} alt="meme-img"/>
-                            <div className="title-header">
-                            <a href="/">    <h1>MEMETECA</h1>  </a>
-                            </div>
-                  
-                </div>
 
-                {/*  Buttons  */}
-                <div className="button-container">
-                    <Link to="/upload">
-                        <button className="button button1"> 
-                            UPLOAD
-                        </button>
-                    </Link>
-                        <button className="button button2">
-                            REGISTER
-                        </button>
-                    <Link to="/login">
-                        <button className="button button3">
-                            LOGIN
-                        </button>
-                    </Link>
-                    
-                </div>
-            </div>
-    )
+  return (
+    <div className="container-header">
+      <div className="center-header">
+        <img src={meme} alt="meme-img" />
+        <div className="title-header">
+          <a href="/">
+            <h1>MEMETECA</h1>
+          </a>
+        </div>
+      </div>
+      {/*  Buttons  */}
+      <div className="button-container">
 
+          <Hbutton name="UPLOAD" link="/upload" />
+
+          <Hbutton name="REGISTER" link="/register" />
+
+          <Hbutton name="LOGIN" link="/login" />
+          
+      </div>
+    </div>
+  );
 }

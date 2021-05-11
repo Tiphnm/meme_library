@@ -10,18 +10,29 @@ const memeSchema = new mongoose.Schema({
 })
 
 /* Create a mongoose model that connects the Schema with the collection */
+
 const collection = "_memes"
-const Meme = mongoose.model(collection, memeSchema)
+
+delete mongoose.connection.models[collection];
+
+let Meme = mongoose.models.Meme  || mongoose.model(collection, memeSchema)
 
 
 let All_memes 
 
 /* Define the route */
 export default async function getMemes(req, res) {
+    try {
 
-    await Meme.find((err, res) => {
-        All_memes = res
-    })
+        await Meme.find((err, res) => {
+            if(err) console.log(err)
+            All_memes = res
+        })
 
-    res.send(All_memes)
+        res.send(All_memes)
+    } catch (error) {
+        console.log(error)   
+    }
+  
+  
 }
