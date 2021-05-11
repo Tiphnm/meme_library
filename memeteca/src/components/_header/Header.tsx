@@ -20,6 +20,7 @@ export default function Header(props: any) {
           {props.option=="home" ? <><Hbutton name="REGISTER" link="/register"/>  <Hbutton name="UPLOAD" link="/upload"/> <Hbutton name="LOGIN" link="/login"/> </> : null}
           {props.option == "register"  ? <><Hbutton name="UPLOAD" link="/upload"/> <Hbutton name="LOGIN" link="/login"/> </>: null}
           {/* {props.option== "upload" ?  <Hbutton name="LOGIN" link="/login"/> : null} */}
+          
           {props.option== "login" ?  <Hbutton name="UPLOAD" link="/upload"/> : null}
       </div>
     </div>
