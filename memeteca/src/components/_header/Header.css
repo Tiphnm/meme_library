@@ -19,12 +19,13 @@
 }
 
 .title-header{
-    font-family: 'Rammetto One', cursive;;
+    font-family: 'Rammetto One', cursive;
 }
 
 .button-container button{
     font-family: 'Press Start 2P', cursive;
-}
+ }
+
 .button {
     background-color: #4c7aaf; /* Green */
     border: none;
@@ -37,6 +38,7 @@
     margin: 4px 2px;
     transition-duration: 0.4s;
     cursor: pointer;
+    
   }
   .button1 {
     color:#FFFFFF; 

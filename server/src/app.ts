@@ -51,7 +51,7 @@ app.post('/login', async (req, res) => {
   }
   validateUser(result)
 });
-
+/*
 //route post pour reccuperer les users et passwords et checker
 /*
 app.post("/login2", (req, res) => {

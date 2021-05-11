@@ -45,9 +45,11 @@ function App(props:any) {
       <Header path={props.location} history={history} />
       
       <div className="wrapper">
+
         {isLogged ?<div> You are logged as:   <button 
         onClick={ ()=> { removeToken(token)}}>Click here to logout</button> </div> : "" }
           <Switch>     
+
             <Route exact path="/">
               <Redirect to="/home" />
             </Route>
