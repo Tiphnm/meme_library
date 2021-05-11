@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import axios from "axios"
 import './Login.css';
 import * as cors from 'cors';
+// import Header from '../_header/Header'
 type Props ={
   setToken?: () => any
 }
