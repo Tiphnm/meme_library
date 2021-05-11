@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import axios, { AxiosResponse } from "axios"
 import './Login.css';
 import * as cors from 'cors';
-const url = "http://localhost:4000/login"
 
+const url = "http://localhost:4000/login"
 type Props ={
   setToken?: any
 }

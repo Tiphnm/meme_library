@@ -10,7 +10,6 @@ import { send } from "process";
 
 const key_jwt = process.env.SECRET_TOKEN
 
-
 const app = express();
 const PORT = 4000;
 app.use(bodyParser.json())
@@ -103,6 +102,8 @@ app.post("/privee", authentification,(req, res)=> {
   res.send("privee")
   
 })
+
+app.get("/memes", getMemes)
 
 
 app.get("/users", (req, res) => {

@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './components/_header/Header'
 import Upload from './components/_upload/Upload'
 import { BrowserRouter as Router, Switch, Route, useLocation, Redirect, useHistory } from "react-router-dom"
 import HotMemes from './components/_hotmemes/Hotmemes'
+import ButtonRegister from './components/_buttonregister/ButtonRegister'
 import './App.css';
 import './components/_header/Header.css'
 import loader from "./assets/img/loader.gif"
@@ -38,8 +39,10 @@ function App(props:any) {
 /*   REDIRECT */ 
 
 
+  /* */
   return (
     <div className="App">
+        {/* Header and Nav Bar */}
     <Router>
     {/* Header and Nav Bar */}          
       <Header path={props.location} history={history} />
@@ -49,25 +52,21 @@ function App(props:any) {
         {isLogged ?<div> You are logged as:   <button 
         onClick={ ()=> { removeToken(token)}}>Click here to logout</button> </div> : "" }
           <Switch>     
-
             <Route exact path="/">
               <Redirect to="/home" />
             </Route>
-            
             <Route path="/login">
               <Login />
             </Route>
-
             <Route path="/register">
               <Register />
             </Route>
-
             {/* Hot memes principal section  */}
-            
+
             <Route path="/home">
-              <HotMemes loader={loaderBlack} />  
+              <HotMemes loader={loaderBlack} />
             </Route>
-           
+
             {/* Upload */}
             <Route path="/upload">
               {/* Upload component requires user to Have a log in session */}
@@ -77,7 +76,7 @@ function App(props:any) {
             <Route path="/dashboard">
               <Dashboard />
             </Route>
-  
+
           </Switch>
         </div>
       </Router>
