@@ -2,11 +2,17 @@ import React, { useState } from 'react';
 import Path from 'path';
 import troll from '../../assets/img/troll.png'
 import uploadFileToBlob, { isStorageConfigured } from '../azure-storage-blob';
+import { BrowserRouter as Router, Switch, Route, Link, Redirect, useHistory } from "react-router-dom"
 import './Upload.css'
 
 const storageConfigured = isStorageConfigured();
 
-const Upload = (): JSX.Element => {
+const Upload = (props: any, ...rest: any): JSX.Element => {
+
+
+const isLogged = false 
+
+
   // all blobs in container
   const [blobList, setBlobList] = useState<string[]>([]);
 
@@ -66,7 +72,7 @@ const Upload = (): JSX.Element => {
       </ul>
     </div>
   );
-  return (
+  return ( 
     <>
       <div className="container">
         <div className="container-aside">
@@ -80,6 +86,9 @@ const Upload = (): JSX.Element => {
           </ul>
         </div>
         <div className="container-main">
+          {/* USER IS LOGGED IN ? */}
+          {isLogged? <p>Hello</p>:   <Redirect to={{ pathname: "/login", state: { from: location } }}/> }
+
           <h1 className="title-blob">Upload Your meme and enjoy</h1>
           {storageConfigured && !uploading && DisplayForm()}
           {storageConfigured && uploading && <div>Uploading</div>}

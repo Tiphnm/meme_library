@@ -1,16 +1,17 @@
 import React, {SyntheticEvent, useState } from 'react';
+import { BrowserRouter as Router, Switch, Route, Link, Redirect, useHistory } from "react-router-dom"
 import PropTypes from 'prop-types';
 import axios, { AxiosResponse } from "axios"
 import './Login.css';
 import * as cors from 'cors';
 const url = "http://localhost:4000/login"
+
 type Props ={
-  setToken?: () => any
+  setToken?: any
 }
 
-export default function Login(props: Props) {
-  {props.setToken}
-  
+export default function Login(props: any) {
+
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
@@ -25,14 +26,14 @@ async function loginUser() {
   return data
 }
 
-async function handleSubmit(e: SyntheticEvent) {
+async function handleSubmit(e: React.FormEvent) {
   e.preventDefault();
   const loginData =  await loginUser()
+
   // Login was succesfull 
-  console.log(loginData.data)
 
+  props.setToken? props.setToken(loginData.data):  console.log(loginData.data)
 }
-
 
   return (
     <div className="login-wrapper">
