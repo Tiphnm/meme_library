@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link, useHistory } from "react-router-dom";
 import meme from "../../assets/img/troll.png";
 import Hbutton from "./Hbutton";
+import "./Header.css"
 
 export default function Header(props: any) {
 

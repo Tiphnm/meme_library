@@ -6,8 +6,7 @@ import { BrowserRouter as Router, Switch, Route, Link, Redirect, useHistory } fr
 import './Upload.css'
 
 const storageConfigured = isStorageConfigured();
-
-const Upload = (props: any, ...rest: any): JSX.Element => {
+const Upload = (props: any): JSX.Element => {
 
 
 const isLogged = false 
@@ -85,11 +84,18 @@ const isLogged = false
           </ul>
         </div>
         <div className="container-main">
-          {/* USER IS LOGGED IN ? */}
-          {isLogged? <p>Hello</p>:   <Redirect to={{ pathname: "/login", state: { from: location } }}/> }
-
+          {/* MEME FORM */}
+          <div className="uploadMemeForm">
           <h1 className="title-blob">Upload Your meme and enjoy</h1>
-          {storageConfigured && !uploading && DisplayForm()}
+          <label htmlFor="name">Name </label>
+          <input name="name" type="text" id="name" />
+          <br />
+          <label htmlFor="tags">Tags </label>
+          <input name="tags" type="text" id="tags" />
+           {storageConfigured && !uploading && DisplayForm()}
+          </div>
+
+
           {storageConfigured && uploading && <div>Uploading</div>}
           <hr />
           {storageConfigured && blobList.length > 0 && DisplayImagesFromContainer()}
