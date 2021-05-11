@@ -22,13 +22,10 @@ async  function connect() {
     mongoose.connect(MONGOURI, {useNewUrlParser: true, useUnifiedTopology: true})
     const db = mongoose.connection;
     db.on('error', console.error.bind(console, 'connection error:'));
-
-
     db.once('open', function() {
   // we're connected!
         console.log("connected")
     });
-    
 }
 
 async function display_users(){  
@@ -63,12 +60,10 @@ async function register_user(getUser,getPass) {
  try {
     let data = await newUser.save( (err, myUser) => {
         if (err) {
-
-            throw new Error('User already existe') 
+            throw new Error('User already exist') 
         }
         //////
-        console.log(myUser)
-        
+        console.log(myUser.username)   
         console.log("New user registered")   
     })
 }  catch (error) {
