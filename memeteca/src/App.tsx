@@ -3,18 +3,11 @@ import Header from './components/_header/Header'
 import Upload from './components/_upload/Upload'
 import { BrowserRouter as Router, Switch, Route, useLocation, Redirect, useHistory } from "react-router-dom"
 import HotMemes from './components/_hotmemes/Hotmemes'
-import ButtonRegister from './components/_buttonregister/ButtonRegister'
-import './App.css';
-import './components/_header/Header.css'
-import loader from "./assets/img/loader.gif"
 import loaderBlack from "./assets/img/loaderblack.gif"
-import Dashboard from './components/Dashboard';
 import Login from './components/_login/Login';
 import useToken from './typescript/useToken';
-import './App.css';
 import Register from './components/_register/Register';
-import { bool } from 'prop-types';
-
+import './App.css';
 
 function App(props:any) {
   let isLogged;
@@ -71,10 +64,6 @@ function App(props:any) {
             <Route path="/upload">
               {/* Upload component requires user to Have a log in session */}
             <Upload /> 
-            </Route>
-
-            <Route path="/dashboard">
-              <Dashboard />
             </Route>
 
           </Switch>
