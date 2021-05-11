@@ -1,0 +1,57 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+body{
+    background-color: #000000;
+}
+.container{
+    display: flex;
+}
+.container-main{
+    background-color: #333333;
+    border-radius: 20px;
+    margin:50px auto;
+    padding-top: 2rem;
+    width: 50%;
+}
+
+.container-main img{
+    padding-top: 1rem;
+}
+.container-meme{
+    width: 100%;
+    margin: 5px;}
+
+.container-comment{
+    display: flex;
+    justify-content: center;
+    color: white;
+    line-height: 1rem;
+    padding: 10px;
+
+}
+button{
+    background-color: #333333;
+    border : solid; 
+    border-color: white;
+}
+
+.span2{
+    margin-left: 0.5rem;
+}
+
+.far {
+    width:8rem;
+    color:white;
+}
+
+.far:hover {
+ color: #8340FF;
+ 
+}
+
+.like_button {
+   margin: 10px;
+}
+

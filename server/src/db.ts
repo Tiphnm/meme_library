@@ -15,7 +15,7 @@ const userSchema = new mongoose.Schema({
 
 userSchema.plugin(uniqueValidator, {message: 'is already taken.'})
 
-const User = mongoose.model(userCollection, userSchema)
+const User =  mongoose.connection.models[userCollection] || mongoose.model(userCollection, userSchema)
 /// 
 async  function connect() {
     console.log("Connecting")

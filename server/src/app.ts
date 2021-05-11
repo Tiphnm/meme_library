@@ -50,29 +50,31 @@ app.post('/login', async (req, res) => {
   }
   validateUser(result)
 });
-
+/*
 //route post pour reccuperer les users et passwords et checker
-// app.post("/login2", (req, res) => {
-//   const { mail, password } = req.body
-//   for (let i = 0; i < users.length; i++) {
-//     let user = users[i]
-//     if (user.mail == mail) {
-//       if (user.password == password) {
-//         const token = jwt.sign({ id: user.id }, key_jwt);
-//         res.send(token)
-//       } else {
-//         res.send("wrong password")
-//       }
-//       return
-//     }
+/*
+app.post("/login2", (req, res) => {
+  const { mail, password } = req.body
+  for (let i = 0; i < users.length; i++) {
+    let user = users[i]
+    if (user.mail == mail) {
+      if (user.password == password) {
+        const token = jwt.sign({ id: user.id }, key_jwt);
+        res.send(token)
+      } else {
+        res.send("wrong password")
+      }
+      return
+    }
 
-//   }
-//   console.log(mail, password);
-//   res.send("wrong user")
+  }
+  console.log(mail, password);
+  res.send("wrong user")
 
-// })
-
+})
+*/
 //authentification
+
 const authentification = (req, res, next) => {
   try {
     const { token } = req.query

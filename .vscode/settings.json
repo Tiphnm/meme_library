@@ -1,8 +1,10 @@
 {
     "cSpell.words": [
+        "Hbutton",
         "MONGOURI",
         "STORAGERESOURCENAME",
         "STORAGESASTOKEN",
+        "btndata",
         "uuidv"
     ],
     "azureFunctions.deploySubpath": "function",
