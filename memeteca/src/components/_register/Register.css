@@ -34,9 +34,19 @@ button{
     border: 2px; 
 }
 
-.container-register h1{
-    font-family: 'Rammetto One', cursive;
+button:hover{
+    color: #000000;
+    background-color: #FFFFFF;
 }
 
+.container-register {
+    font-family: 'Rammetto One', cursive;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-
+.title{
+    font-family: 'Rammetto One', cursive;
+    color: white;
+}
