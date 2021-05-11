@@ -21,6 +21,8 @@ function Register() {
 
     return (
         <div className="container-register">
+            <h1 className = "title">Register Form</h1>
+            <br />
 
             <form className="form" onSubmit={handleRegister}>
                 <h1 className="title-register">Please Register</h1>
