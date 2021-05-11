@@ -86,7 +86,6 @@ const isLogged = false
         </div>
         <div className="container-main">
           {/* USER IS LOGGED IN ? */}
-          {isLogged? <p>Hello</p>:   <Redirect to={{ pathname: "/login", state: { from: location } }}/> }
 
           <h1 className="title-blob">Upload Your meme and enjoy</h1>
           {storageConfigured && !uploading && DisplayForm()}
