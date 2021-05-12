@@ -1,12 +1,11 @@
-import React, {SyntheticEvent, useState } from 'react';
+import React, {useState } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link, Redirect, useHistory } from "react-router-dom"
 import PropTypes from 'prop-types';
-import axios, { AxiosResponse } from "axios"
+import axios from "axios"
 import Header from '../_header/Header'
 import './Login.css';
 import * as cors from 'cors';
-
-const url = "http://localhost:4000/login"
+const api_url = "http://localhost:4000/login"
 type Props ={
   setToken?: any
 }
@@ -17,7 +16,7 @@ export default function Login(props: any) {
   const [password, setPassword] = useState('')
 
 async function loginUser() {
-  let data = await axios.post(url, {
+  let data = await axios.post(api_url, {
     headers:{'Content-Type' : 'application/json'},
     credentials: {
       username,

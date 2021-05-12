@@ -1,9 +1,10 @@
 import { BlobServiceClient, ContainerClient} from '@azure/storage-blob';
-require('dotenv').config()
+import dotenv from "dotenv"
+dotenv.config()
 /*  Config Azure Blob Storage + Container */
-const sasToken = process.env.REACT_APP_STORAGESASTOKEN || "";
+const sasToken = process.env.REACT_APP_STORAGESASTOKEN ;
 const containerName = "memes";
-const storageAccountName = process.env.REACT_APP_STORAGE_STORAGERESOURCENAME || "";
+const storageAccountName = process.env.REACT_APP_STORAGE_STORAGERESOURCENAME;
 
 /*  Disable upload button if the Storage is not configurated */
 export const isStorageConfigured = () => {
