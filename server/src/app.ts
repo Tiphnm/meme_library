@@ -13,7 +13,6 @@ dotenv.config()
 const key_jwt = process.env.SECRET_TOKEN
 const PORT = process.env.PORT || 4000;
 const app = express();
-
 /* BODY PARSER */ 
 app.use(express.json({}))
 app.use(express.urlencoded())
