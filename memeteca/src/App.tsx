@@ -13,6 +13,7 @@ import dotenv from "dotenv"
 dotenv.config()
 
 function App(props:any) {
+  console.log(process.env.MONGOURI)
   let isLogged;
   const {token, setToken} = useToken()
   const [logged, setLogged] =  useState(false)
