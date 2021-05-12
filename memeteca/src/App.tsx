@@ -9,6 +9,8 @@ import Login from './components/_login/Login';
 import useToken from './typescript/useToken';
 import Register from './components/_register/Register';
 import './App.css';
+import dotenv from "dotenv"
+dotenv.config()
 
 function App(props:any) {
   let isLogged;

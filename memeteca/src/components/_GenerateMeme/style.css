@@ -107,7 +107,6 @@
 .img-result {
   height: auto;
   max-height: 500px;
-  object-fit: contain;
   width: 90%;
   border: #8340FF 10px solid;
 }
