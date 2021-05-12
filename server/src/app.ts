@@ -11,7 +11,7 @@ import jwt from "jsonwebtoken"
 
 
 const key_jwt = process.env.SECRET_TOKEN
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 const app = express();
 
 /* BODY PARSER */ 
