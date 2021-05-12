@@ -3,6 +3,7 @@ import Header from './components/_header/Header'
 import Upload from './components/_upload/Upload'
 import { BrowserRouter as Router, Switch, Route, useLocation, Redirect, useHistory } from "react-router-dom"
 import HotMemes from './components/_hotmemes/Hotmemes'
+import Generator from './components/_GenerateMeme/Generator'
 import loaderBlack from "./assets/img/loaderblack.gif"
 import Login from './components/_login/Login';
 import useToken from './typescript/useToken';
@@ -66,6 +67,10 @@ function App(props:any) {
             <Route path="/upload">
               {/* Upload component requires user to Have a log in session */}
             <Upload /> 
+            </Route>
+            <Route path="/create">
+               {/* <CreateMeme /> */}
+               <Generator />
             </Route>
 
           </Switch>
