@@ -4,11 +4,11 @@ import deleteMemes from "./Routes/deleteMeme"
 import {ResultUser} from "./types"
 import * as registerRouter from './Routes/register';
 import express from "express"
-import 'dotenv/config'
+import dotenv from "dotenv"
 import bodyParser from "body-parser"
 import cors from "cors"
 import jwt from "jsonwebtoken"
-
+dotenv.config()
 
 const key_jwt = process.env.SECRET_TOKEN
 const PORT = process.env.PORT || 4000;
