@@ -1,7 +1,9 @@
-import 'dotenv/config'
 import * as bcrypt from "bcrypt"
 import mongoose, { Mongoose } from "mongoose"
 import { type } from 'os'
+import dotenv from "dotenv"
+dotenv.config()
+
 const MONGOURI: string = process.env.MONGOURI
 const collection = "db1"
 const userCollection = "users"
