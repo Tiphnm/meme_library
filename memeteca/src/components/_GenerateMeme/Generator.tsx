@@ -1,7 +1,7 @@
 // Import react, react-dom & dom-to-image-more
 import * as React from 'react'
 import { render } from 'react-dom'
-import domtoimage from 'dom-to-image'
+import domtoimage from 'dom-to-image-more'
 import Header from "../_header/Header"
 //import domtoimage from 'dom-to-image'
 
@@ -74,7 +74,7 @@ export default function Generator() {
       
   
     // Generate meme image from the content of 'content' div
-    domtoimage.toPng(contentContainerRef.current!).then((dataUrl) => {
+    domtoimage.toPng(contentContainerRef.current!).then((dataUrl: string) => {
       // Create new image
       const img = new Image()
 
