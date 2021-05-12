@@ -1,12 +1,12 @@
 # Docs for the Azure Web Apps Deploy action: https://go.microsoft.com/fwlink/?linkid=2134798
 # More GitHub Actions for Azure: https://go.microsoft.com/fwlink/?linkid=2135048
 
-name: Azure App Service - jojotestlogin(Production), Build and deploy NodeJS app
+name: Azure App Service - memeteca(Production), Build and deploy NodeJS app
 
 on:
   push:
     branches:
-      - backend
+      - master
 
 jobs:
   build-and-deploy:
@@ -23,19 +23,17 @@ jobs:
       with:
         node-version: '14.x'
 
-
     - name: npm install, build, and test
-      run: | 
-        cd memeteca-test 
+      run: |
         npm install
         npm run build --if-present
-        
-# npm run test --if-present
+        npm run test --if-present
+
     - name: Run Azure webapp deploy action using publish profile credentials
       uses: azure/webapps-deploy@v2
       with:
-        app-name: jojotestlogin
+        app-name: memeteca
         slot-name: Production
-        publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_02042C192C184CB6A7F3692F15BB8295 }}
+        publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_185643F173C848359BA2BC9C59626396 }}
         package: .
 
