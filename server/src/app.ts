@@ -8,7 +8,9 @@ import 'dotenv/config'
 import bodyParser from "body-parser"
 import cors from "cors"
 import jwt from "jsonwebtoken"
+import dotenv from "dotenv"
 
+dotenv.config()
 
 const key_jwt = process.env.SECRET_TOKEN
 const PORT = process.env.PORT || 8080; 
