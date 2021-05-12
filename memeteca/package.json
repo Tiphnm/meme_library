@@ -64,8 +64,7 @@
     "eslint": "^7.25.0",
     "eslint-plugin-react": "^7.23.2",
     "express": "^4.17.1"
-  }
-  , 
+  },
   "engines": {
     "node": "14.0"
   }
