@@ -7,7 +7,7 @@
       "forceConsistentCasingInFileNames": true,
       "moduleResolution": "node",
       "sourceMap": true,
-      "outDir": "dist",
+      "outDir": "build",
       "typeRoots": ["@types"]
     },
     "lib": ["es2018"]
