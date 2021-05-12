@@ -48,7 +48,8 @@ function App(props:any) {
         onClick={ ()=> { removeToken(token)}}>Click here to logout</button> </div> : "" }
           <Switch>     
             <Route exact path="/">
-              <Redirect to="/home" />
+              <Header option="home" />
+              <HotMemes loader={loaderBlack} />
             </Route>
             <Route path="/login">
               <Login />
