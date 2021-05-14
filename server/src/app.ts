@@ -5,7 +5,6 @@ import {ResultUser} from "./types"
 import * as registerRouter from './Routes/register';
 import express from "express"
 import dotenv from "dotenv"
-import bodyParser from "body-parser"
 import cors from "cors"
 import jwt from "jsonwebtoken"
 dotenv.config()
@@ -13,9 +12,10 @@ dotenv.config()
 const key_jwt = process.env.SECRET_TOKEN
 const PORT = process.env.PORT || 4000;
 const app = express();
+
 /* BODY PARSER */ 
-app.use(express.json({}))
-app.use(express.urlencoded())
+app.use(express.json())
+app.use(express.urlencoded( {extended: true}))
 
 /* CORS */
 app.use(cors())

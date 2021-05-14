@@ -21,7 +21,7 @@ const User =  mongoose.connection.models[userCollection] || mongoose.model(userC
 /// 
 async  function connect() {
     console.log("Connecting")
-    mongoose.connect(MONGOURI, {useNewUrlParser: true, useUnifiedTopology: true})
+    mongoose.connect(MONGOURI, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true})
     const db = mongoose.connection;
     db.on('error', console.error.bind(console, 'connection error:'));
     db.once('open', function() {
