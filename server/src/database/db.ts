@@ -76,27 +76,26 @@ async function register_user(getUser,getPass) {
 
 
 async function loginUser(user: string, pass: string) {
+    
 interface myUser {
     username: String,
     password: String
 }
+
 const logUser = new User({
     username: user,
     password: pass
 })
 
 try {
-    let data = await User.findOne({username: user}, (err)=> {
-        data = null 
-        console.log(err)
-    });
+    let data = await User.findOne({username: user});
     if(!data) {
       throw new Error('no document found');
     }
     return data;
 } catch (err) {
-    if (err) console.error(err)
-    return 0;
+    if (err) console.error("User not found")
+    return null;
 }
 }
 

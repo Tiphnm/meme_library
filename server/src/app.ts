@@ -29,8 +29,25 @@ app.get('/', (req, res) => {
   res.send('Express + TypeScript Server')
 });
 
-/* Login Route */
-app.post('/login', async (req, res) => {});
+/* LOGIN Route */
+app.post('/login', loginRoute);
+
+
+/* REGISTER  Route */ 
+app.post("/register", (req, res) => {
+  const username = req.body.credentials.username
+  const password = req.body.credentials.password
+  register_user(username,password)
+})
+
+/* GET MEMES route */
+app.get("/memes", getMemes)
+
+/* DELETE MEMES Route */
+app.delete("/deletememe", deleteMemes)
+
+
+
 
 /*
 //route post pour reccuperer les users et passwords et checker
@@ -92,18 +109,7 @@ app.get("/users", (req, res) => {
 })
 
 
-/* Register User Route */ 
-app.post("/register", (req, res) => {
-  const username = req.body.credentials.username
-  const password = req.body.credentials.password
-  register_user(username,password)
-})
 
-/* Get memes route */
-app.get("/memes", getMemes)
-
-/* DeleteMemes Route */
-app.delete("/deletememe", deleteMemes)
 
 
 /* Server listening */ 
