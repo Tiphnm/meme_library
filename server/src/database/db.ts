@@ -2,6 +2,7 @@ import * as bcrypt from "bcrypt"
 import mongoose, { Mongoose } from "mongoose"
 import { type } from 'os'
 import dotenv from "dotenv"
+import { exception } from "console"
 dotenv.config()
 
 const MONGOURI: string = process.env.MONGOURI
@@ -53,27 +54,36 @@ try {
 }
 */
 
+/*  ----------- REGISTER  -------------------- */
+
 async function register_user(getUser,getPass) {
- const newUser = new User({
-     username: getUser,
-     password: getPass
- })
+    console.log(getUser, getPass)
+    let status = ""
 
- try {
-    let data = await newUser.save( (err, myUser) => {
-        if (err) {
-            throw new Error('User already exist') 
-        }
-        //////
-        console.log(myUser.username)   
-        console.log("New user registered")   
+    const newUser = new User({
+        username: getUser,
+        password: getPass
     })
-}  catch (error) {
 
-    return 0
-}
+    try {
+         status = await newUser.save( (err, myUser) => {
+            if (err) {
+                throw new Error(err)
+            } else {
+                console.log(myUser.username)   
+                console.log("New user registered")
+            }
+            return 0
+        })
+       
+    }  catch (error) {
+        console.log("ERROR 2: " + error)
+        return 0
+    }
+    return status 
 }
 
+/*  ----------- LOGIN -------------------- */ 
 
 async function loginUser(user: string, pass: string) {
     

@@ -8,8 +8,6 @@ import {ResultUser} from "./types"
 import express from "express"
 import dotenv from "dotenv"
 import cors from "cors"
-import jwt from "jsonwebtoken"
-import { error } from "console";
 import { isValidObjectId } from "mongoose";
 dotenv.config()
 
@@ -24,21 +22,20 @@ app.use(express.urlencoded( {extended: true}))
 /* CORS */
 app.use(cors())
 
+
 /* Home Route */ 
 app.get('/', (req, res) => {
   res.send('Express + TypeScript Server')
 });
+
 
 /* LOGIN Route */
 app.post('/login', loginRoute);
 
 
 /* REGISTER  Route */ 
-app.post("/register", (req, res) => {
-  const username = req.body.credentials.username
-  const password = req.body.credentials.password
-  register_user(username,password)
-})
+app.post("/register", registerRouter)
+
 
 /* GET MEMES route */
 app.get("/memes", getMemes)
@@ -48,32 +45,7 @@ app.delete("/deletememe", deleteMemes)
 
 
 
-
-/*
-//route post pour reccuperer les users et passwords et checker
-/*
-app.post("/login2", (req, res) => {
-  const { mail, password } = req.body
-  for (let i = 0; i < users.length; i++) {
-    let user = users[i]
-    if (user.mail == mail) {
-      if (user.password == password) {
-        const token = jwt.sign({ id: user.id }, key_jwt);
-        res.send(token)
-      } else {
-        res.send("wrong password")
-      }
-      return
-    }
-
-  }
-  console.log(mail, password);
-  res.send("wrong user")
-
-})
-*/
-//authentification
-
+/* Optional Blocks  
 const authentification = (req, res, next) => {
   try {
     const { token } = req.query
@@ -102,14 +74,12 @@ app.post("/private", authentification,(req, res)=> {
   
 })
 
+*/
 
-/* Get all users */ 
+/* Get all users: CURRENTLY NOT WORKING */ 
 app.get("/users", (req, res) => {
   res.send(display_users())
 })
-
-
-
 
 
 /* Server listening */ 
