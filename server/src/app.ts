@@ -1,12 +1,16 @@
-import { connect, display_users, register_user, loginUser} from "./db"
+import { connect, display_users, register_user, loginUser} from "./database/db"
+/* Import routes */ 
 import getMemes from "./Routes/hot_display"
 import deleteMemes from "./Routes/deleteMeme"
+import registerRouter from './Routes/register';
+import loginRoute from './Routes/login';
 import {ResultUser} from "./types"
-import * as registerRouter from './Routes/register';
 import express from "express"
 import dotenv from "dotenv"
 import cors from "cors"
 import jwt from "jsonwebtoken"
+import { error } from "console";
+import { isValidObjectId } from "mongoose";
 dotenv.config()
 
 const key_jwt = process.env.SECRET_TOKEN
@@ -26,34 +30,7 @@ app.get('/', (req, res) => {
 });
 
 /* Login Route */
-app.post('/login', async (req, res) => {
-
-  const username = req.body.credentials.username
-  const password = req.body.credentials.password
-  const result = await loginUser(username,password)
-  console.log("result is:" + result)
-
-  function validateUser(result) {
-    if (result === 0) {
-      console.log("User doesn't exist")
-      return 0
-    }
-
-    if (password === result.password) {
-      /*  Login Success */
-      console.log("Login Success")
-      const token = jwt.sign({ id: result._id }, key_jwt);
-      res.send(token)
-      console.log(token)
-      return 1 
-
-    } else {
-      console.log("Password not matching ")
-      return 0
-    }
-  }
-  validateUser(result)
-});
+app.post('/login', async (req, res) => {});
 
 /*
 //route post pour reccuperer les users et passwords et checker

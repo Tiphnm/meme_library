@@ -86,12 +86,16 @@ const logUser = new User({
 })
 
 try {
-    let data = await User.findOne({username: user});
+    let data = await User.findOne({username: user}, (err)=> {
+        data = null 
+        console.log(err)
+    });
     if(!data) {
       throw new Error('no document found');
     }
     return data;
-} catch (error) {
+} catch (err) {
+    if (err) console.error(err)
     return 0;
 }
 }

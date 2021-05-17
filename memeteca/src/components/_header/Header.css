@@ -3,24 +3,14 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
-
 }
 
-.center-header{
-    display: flex;
-    justify-content: space-evenly;
-    color: #FFFFFF;
-    padding: 1%;
-
+.logo img {
+  min-width: 5rem;
+  width: auto;
+  max-width: 15rem;
 }
 
-.center-header img{
-    width: 15%;
-}
-
-.title-header{
-    font-family: 'Rammetto One', cursive;
-}
 
 .button-container button{
     font-family: 'Press Start 2P', cursive;
@@ -75,4 +65,11 @@
 
   .img-item{
     padding-bottom: 1rem;
+  }
+
+  a {
+    padding: inherit;
+    margin: inherit;
+    display: inherit;
+    size: inherit;
   }

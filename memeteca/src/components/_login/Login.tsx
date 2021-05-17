@@ -11,10 +11,11 @@ type Props ={
 }
 
 export default function Login(props: any) {
-
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-
+  const [login, setLogin] = useState(false)
+  const [error, setError] = useState("")
+ 
 async function loginUser() {
   let data = await axios.post(api_url, {
     headers:{'Content-Type' : 'application/json'},
@@ -22,26 +23,36 @@ async function loginUser() {
       username,
       password
     }
-  }).then(res =>  res)
+  }).then(res =>  res).catch((err) => {
+   if(err.response) {
+    console.log("my error: " + err)
+    console.log(err.response.data)
+    setError(err.response.data)
+   }})
   return data
 }
 
 async function handleSubmit(e: React.FormEvent) {
   e.preventDefault();
+  setUsername("")
+  setPassword("")
   const loginData =  await loginUser()
-
   // Login was succesfull 
+  console.log(loginData)
 
-  props.setToken? props.setToken(loginData.data):  console.log(loginData.data)
+  if (loginData) {
+    props.setToken(loginData['data'])
+    console.log(loginData['data'])
+  }
 }
+
 
   return (
     <>
-    <Header option="login"/>
     <div className="login-wrapper">
-      <br></br>
       <h1 className="title">LOGIN FORM </h1>
-      <br></br>
+      {error==""? "": <p>{error}</p>}
+      <br />
       <form className="form" onSubmit={handleSubmit}>
         <h1 className="title-login">Please Sign in</h1>
         <div className="form_username">
