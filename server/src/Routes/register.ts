@@ -14,7 +14,7 @@ export default async function registerRouter(req: Request , res: Response ) {
       try {
 
         // Function to register an user in db.ts
-        const registrationResult =  await Save(username, password)
+        const registrationResult =  await register_user(username, password)
 
         console.log("RESULT IS " + registrationResult)
 
