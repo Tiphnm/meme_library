@@ -1,3 +1,4 @@
+import express, {Request, Response} from 'express';
 import {loginUser} from "../database/db"
 import jwt from "jsonwebtoken"
 import dotenv from "dotenv"
@@ -5,42 +6,69 @@ dotenv.config()
 
 const key_jwt = process.env.SECRET_TOKEN
 
-export default async function loginRoute(req,res) {
-  
-  function isValid(input:string){
-    if (input.length > 3) return true 
-  }
-
-  const username = req.body.credentials.username
-  const password = req.body.credentials.password
-  let result 
-  isValid(username) && isValid(password)? result = await loginUser(username,password) : 0
+interface Credentials {
+    username: string,
+    password: string
+}
 
 
-  console.log("result is:" + result)
+/* Optional block */ 
+function isValid(input) {
+    if (input.lenght > 1 )return true
+}
+/* Optional block */ 
 
-  function validateUser(result) {
-    if (result === 0) {
-      console.log("User doesn't exist")
-      res.status(401).send('no user exists in db to update');
-      return 0
+export default async function loginRoute(req: Request ,res: Response) {
+
+    if (req.body.credentials) {
+        // If credentials are passed
+        console.log("credentials received")
+        console.log("API CREDENTIALS " + req.body.credentials)
+        // Now check if those credentials are not unEmpty values
+        if (req.body.credentials.username && req.body.credentials.password) {
+        
+        const {username, password}: Credentials = req.body.credentials
+
+           try {
+           
+            const fetchCredentials = await loginUser(username,password)
+            
+            /* Evaluate the fetch request to the Database */ 
+
+            if (!fetchCredentials) {
+                // Not user Found
+                console.log("Not user found")
+                return res.status(401).send('User not found');
+
+            } else if (fetchCredentials) {
+             // User Found 
+
+                 if (fetchCredentials.password == password) {
+                     // User ok + pass ok 
+
+                     console.log("Login Success")
+                     const token = jwt.sign({ id: fetchCredentials._id, user: fetchCredentials.username }, key_jwt);
+                     console.log(token)
+                     return res.status(200).send(token)
+
+                 }
+                // User ok but password incorrect
+                console.log("Password not matching ")
+                return res.status(401).send("Incorrect password")
+                
+            }
+
+           } catch (error) {
+                console.log("error on catching ")
+               console.error(" ERROR "+error)
+           }
+ 
+        }
+    // There are credentials but they are not in a valid format
+        return res.json("Your credentials format are not valid")
+ 
     }
-
-    if (password === result.password) {
-      /*  Login Success */
-      console.log("Login Success")
-      const token = jwt.sign({ id: result._id, user: result.username }, key_jwt);
-      res.send(token)
-      console.log(token)
-      return 1 
-
-    } else {
-      console.log("Password not matching ")
-      res.status(401).send('Password incorrect');
-      return 0
-    }
-  }
-
-  validateUser(result)
-
+    // There are not credentials
+    res.status(401).send("Your credentials are empty")
+    res.end()
 }

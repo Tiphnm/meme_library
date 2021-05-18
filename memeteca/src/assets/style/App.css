@@ -15,3 +15,78 @@ h1 {
   color: white;
   padding: 20px;
 }
+.container-header{
+  background-color: #550053;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.logo img {
+min-width: 5rem;
+width: auto;
+max-width: 15rem;
+}
+
+
+.button-container button{
+  font-family: 'Press Start 2P', cursive;
+}
+
+.button {
+  background-color: #4c7aaf; /* Green */
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  
+}
+.button1 {
+  color:#FFFFFF; 
+  border: 2px solid #8340FF;
+  border-radius: 1rem;
+  background-color: #8340FF;
+}
+
+.button1:hover {
+  color: #000000;
+  background-color: #FFFFFF;
+}
+
+.button2 {
+  background-color: #8340FF;
+  color: #FFFFFF; 
+  border: 2px solid #8340FF;
+  border-radius: 1rem;
+}
+
+.button2:hover {
+  color:#000000;
+  background-color: #FFFFFF;
+}
+
+.container-upload{
+  background-color: #333333;
+}
+
+.container-item{
+  font-family: 'Press Start 2P', cursive;
+  
+}
+
+.img-item{
+  padding-bottom: 1rem;
+}
+
+a {
+  padding: inherit;
+  margin: inherit;
+  display: inherit;
+  size: inherit;
+}

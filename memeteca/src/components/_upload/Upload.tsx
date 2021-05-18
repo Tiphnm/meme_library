@@ -73,7 +73,6 @@ const isLogged = false
   );
   return ( 
     <>
-      <Header option="upload"/>
       <div className="container">
         
         <div className="container-aside">

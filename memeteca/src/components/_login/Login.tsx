@@ -1,13 +1,29 @@
 import React, {useState } from 'react';
+/*  Components */
+import Header from '../_header/Header'
+/* Libs */ 
 import { BrowserRouter as Router, Switch, Route, Link, Redirect, useHistory } from "react-router-dom"
 import PropTypes from 'prop-types';
 import axios from "axios"
-import Header from '../_header/Header'
+import dotenv from "dotenv"
+/* assets */ 
 import './Login.css';
-import * as cors from 'cors';
-const api_url = "http://localhost:4000/login"
+
+dotenv.config()
+
+/* Env vars */ 
+const noenv: string = "CONFIGURE YOUR ENV VARS"
+const environment = process.env.REACT_APP_ENV || noenv
+const api_dev = process.env.REACT_APP_API_DEV || noenv
+const api_prod = process.env.REACT_APP_API_PROD || noenv
+
+/* If the ENV environment is active then our api is in Localhost */ 
+let api_url: string 
+environment == "DEV"? (api_url = api_dev) : (api_url = api_prod)
+
+
 type Props ={
-  setToken?: any
+  setToken?: ()=>void
 }
 
 export default function Login(props: any) {
@@ -17,7 +33,7 @@ export default function Login(props: any) {
   const [error, setError] = useState("")
  
 async function loginUser() {
-  let data = await axios.post(api_url, {
+  let data = await axios.post(api_url+"/login", {
     headers:{'Content-Type' : 'application/json'},
     credentials: {
       username,
@@ -32,10 +48,12 @@ async function loginUser() {
   return data
 }
 
-async function handleSubmit(e: React.FormEvent) {
+/* Handle the FORM SENT */
+let from_url = props.url
+//let history = useHistory();
+
+async function handleSubmit(e: any) {
   e.preventDefault();
-  setUsername("")
-  setPassword("")
   const loginData =  await loginUser()
   // Login was succesfull 
   console.log(loginData)
@@ -43,7 +61,9 @@ async function handleSubmit(e: React.FormEvent) {
   if (loginData) {
     props.setToken(loginData['data'])
     console.log(loginData['data'])
+//    history.push("/profile")
   }
+
 }
 
 

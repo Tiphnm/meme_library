@@ -19,6 +19,11 @@ console.log("Header says: login status: " + isLogged)
           <Hbutton name="CREATE MEME" link="/create" />
           <Hbutton name="LOGIN" link="/login" />
       </div>
+      <div className="actions-manager">
+          <Hbutton name="REGISTER" link="/register" />
+          <Hbutton name="UPLOAD" link="/upload" />
+      </div>
+
 
     </div>
   );
