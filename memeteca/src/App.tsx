@@ -29,13 +29,14 @@ import "./assets/style/App.css";
 /* Env vars */
 dotenv.config();
 const jwtSecret = process.env.REACT_APP_SECRET_TOKEN || "memeteca";
+const jojo = process.env.JOJO
 //console.log("SECRET "+jwtSecret)
 
 /* Props: any just for testing, will be removed  */
 function App(props: any) {
   const { token, setToken } = useToken();
   const [logged, setLogged] = useState(false);
-
+  console.log(jojo)
   console.log("APP: Where is my token " + token);
 
   /* LOGOUT FUNCTION */
