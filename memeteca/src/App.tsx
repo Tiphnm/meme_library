@@ -28,7 +28,7 @@ import "./assets/style/App.css";
 
 /* Env vars */
 dotenv.config();
-const jwtSecret = process.env.REACT_APP_SECRET_TOKEN || "";
+const jwtSecret = process.env.REACT_APP_SECRET_TOKEN || "memeteca";
 //console.log("SECRET "+jwtSecret)
 
 /* Props: any just for testing, will be removed  */
