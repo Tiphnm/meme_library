@@ -4,11 +4,11 @@ import getMemes from "./Routes/hot_display"
 import deleteMemes from "./Routes/deleteMeme"
 import registerRouter from './Routes/register';
 import loginRoute from './Routes/login';
-import {ResultUser} from "./types"
 import express from "express"
 import dotenv from "dotenv"
 import cors from "cors"
-import { isValidObjectId } from "mongoose";
+
+
 dotenv.config()
 
 const key_jwt = process.env.SECRET_TOKEN
@@ -25,9 +25,8 @@ app.use(cors())
 
 /* Home Route */ 
 app.get('/', (req, res) => {
-  res.send('Express + TypeScript Server')
+  res.send('Memeteca  API')
 });
-
 
 /* LOGIN Route */
 app.post('/login', loginRoute);

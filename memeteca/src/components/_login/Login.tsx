@@ -1,6 +1,6 @@
 import React, {useState } from 'react';
 /*  Components */
-import Header from '../_header/Header'
+//import Header from '../_header/Header'
 /* Libs */ 
 import { BrowserRouter as Router, Switch, Route, Link, Redirect, useHistory } from "react-router-dom"
 import PropTypes from 'prop-types';
@@ -50,7 +50,7 @@ async function loginUser() {
 
 /* Handle the FORM SENT */
 let from_url = props.url
-//let history = useHistory();
+let history = useHistory();
 
 async function handleSubmit(e: any) {
   e.preventDefault();
@@ -61,7 +61,7 @@ async function handleSubmit(e: any) {
   if (loginData) {
     props.setToken(loginData['data'])
     console.log(loginData['data'])
-//    history.push("/profile")
+    history.push("/")
   }
 
 }
