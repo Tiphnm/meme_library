@@ -25,7 +25,6 @@ jobs:
 
     - name: npm install, build, and test
       run: |
-        
         cd memeteca && npm install
         npm run build --if-present
 
@@ -35,5 +34,5 @@ jobs:
         app-name: lamemeteca
         slot-name: Production
         publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_B6F4323BEAA248E2B5AA6ADD162A20E2 }}
-        package: "./memeteca/"
+        package: .
 
