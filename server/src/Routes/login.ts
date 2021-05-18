@@ -65,10 +65,10 @@ export default async function loginRoute(req: Request ,res: Response) {
  
         }
     // There are credentials but they are not in a valid format
-        return res.json("Your credentials format are not valid")
+        return res.status(401).send("Your credentials format are not valid")
  
     }
     // There are not credentials
-    res.status(401).send("Your credentials are empty")
-    res.end()
+    return res.status(401).send("Your credentials are empty")
+
 }
