@@ -5,9 +5,9 @@ WORKDIR /app
 COPY package.json /app
 RUN npm install
 COPY . /app
+ENV JOJO="hello_from_dockerfile"
 RUN npm run build
 
 # Stage 2
 FROM nginx:1.19.10-alpine
-env JOJO="hello_from_dockerfile"
 COPY --from=build-step /app/build /usr/share/nginx/html
