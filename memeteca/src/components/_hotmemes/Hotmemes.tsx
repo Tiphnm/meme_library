@@ -1,9 +1,23 @@
-import React, {useState, useEffect, Props} from 'react'
-import PropTypes, {InferProps} from "prop-types";
-import Meme from "../_meme/Meme"
+import React, {useState, useEffect} from 'react'
+/* Libs */ 
+import dotenv from "dotenv"
 import axios from "axios"
+/* Components */ 
+import Meme from "../_meme/Meme"
+/* Assets */ 
 import './_hotmemes.css';
-const api_url = "http://localhost:4000/memes"
+
+/* Env vars */ 
+dotenv.config()
+const noenv: string = "CONFIGURE YOUR ENV VARS"
+const environment = process.env.REACT_APP_ENV || noenv
+const api_dev = process.env.REACT_APP_API_DEV || noenv
+const api_prod = process.env.REACT_APP_API_PROD || noenv
+
+/* If the ENV environment is active then our api is in Localhost */ 
+let api_url: string 
+environment == "DEV"? (api_url = api_dev) : (api_url = api_prod)
+
 
 
 type memeType = {
