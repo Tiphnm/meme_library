@@ -20,7 +20,8 @@ import {
 } from "react-router-dom";
 import useToken from "./typescript/useToken";
 import jwt from "jsonwebtoken";
-import dotenv from "dotenv";
+import dotenv from "dotenv"; // Dotenv is not effective  IN REACT
+import env from "@beam-australia/react-env"; // NEW ENV LIB
 /* Assets */
 import memetecaV2 from "./assets/img/MEMETECAV2.gif";
 import loaderBlack from "./assets/img/loaderblack.gif";
@@ -67,6 +68,7 @@ function App(props: any) {
   return (
     <Router>
       <div className="App">
+ 
         {/* ----------- Header and Nav Bar ---------------- */}
         <div className="container-header">
           <Link to="/" className="logo">
@@ -122,6 +124,9 @@ function App(props: any) {
             {/* Hot memes principal section  */}
 
             <Route path="/home">
+  
+            {console.log(env("SECRET_TOKEN"))}
+            {console.log(process.env.REACT_APP_SECRET_TOKEN)}
               <HotMemes loader={loaderBlack} />
             </Route>
 

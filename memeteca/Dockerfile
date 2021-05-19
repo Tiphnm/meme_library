@@ -7,6 +7,7 @@ RUN npm install
 COPY . /app
 ENV JOJO="hello_from_dockerfile"
 RUN npm run build
+ENTRYPOINT yarn react-env --env APP_ENV
 
 # Stage 2
 FROM nginx:1.19.10-alpine

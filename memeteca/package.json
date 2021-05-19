@@ -6,6 +6,7 @@
     "@azure/arm-storage": "^16.0.0",
     "@azure/ms-rest-nodeauth": "^3.0.9",
     "@azure/storage-blob": "^12.5.0",
+    "@beam-australia/react-env": "^3.1.1",
     "@material-ui/core": "^4.11.4",
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^11.2.6",

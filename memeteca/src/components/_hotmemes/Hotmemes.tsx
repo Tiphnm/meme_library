@@ -12,7 +12,7 @@ dotenv.config()
 const noenv: string = "CONFIGURE YOUR ENV VARS"
 const environment = process.env.REACT_APP_ENV || noenv
 const api_dev = process.env.REACT_APP_API_DEV || noenv
-const api_prod = process.env.REACT_APP_API_PROD || noenv
+const api_prod ="https://memetecapi.azurewebsites.net/"
 
 /* If the ENV environment is active then our api is in Localhost */ 
 let api_url: string 
@@ -33,7 +33,7 @@ export default function HotMemes (props: hotMemes) {
     
     useEffect(() => {
         async function getData()  {
-            await axios.get(api_url).then( (res) => {
+            await axios.get(api_prod+"/memes").then( (res) => { /* api_url */ 
                 // Check if the memes arrived
                 console.log(res.data)
                 setMemes(res.data)
@@ -47,8 +47,10 @@ export default function HotMemes (props: hotMemes) {
     }, [loadingMemes])
 
     return (
+      
         <div >
-           {loadingMemes? <img className="hotmeme" alt="loading..." src={props.loader} ></img>:
+              {console.log(loadingMemes)} 
+           {loadingMemes? <img className="hotmeme" alt="loading..." src={props.loader} ></img>: 
             memes.map( (meme) => {
               return  <Meme data={meme} key={meme._id}/>           })}
         </div>
