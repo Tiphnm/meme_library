@@ -13,9 +13,9 @@ dotenv.config()
 
 /* Env vars */ 
 const noenv: string = "CONFIGURE YOUR ENV VARS"
-const environment = process.env.REACT_APP_ENV || noenv
-const api_dev = process.env.REACT_APP_API_DEV || noenv
-const api_prod = process.env.REACT_APP_API_PROD || noenv
+const environment = process.env.REACT_APP_ENV!
+const api_dev = process.env.REACT_APP_API_DEV!
+const api_prod = process.env.REACT_APP_API_PROD!
 
 /* If the ENV environment is active then our api is in Localhost */ 
 let api_url: string 
