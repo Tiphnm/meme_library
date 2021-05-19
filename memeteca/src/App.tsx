@@ -29,7 +29,7 @@ import "./assets/style/App.css";
 /* Env vars */
 dotenv.config();
 const jwtSecret = process.env.REACT_APP_SECRET_TOKEN || "memeteca";
-const jojo = process.env.APPSETTING_JOJO
+const jojo = process.env.JOJO
 //console.log("SECRET "+jwtSecret)
 
 /* Props: any just for testing, will be removed  */
