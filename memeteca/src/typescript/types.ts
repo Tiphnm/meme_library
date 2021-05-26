@@ -10,10 +10,17 @@ export type decodedToken = {
 
 
 export type newMeme = {
+    _id: number,
     data: {
         id: string,
         name: string,
         url: string,
+        metadata:  {
+            likes: number,
+            dislikes: number,
+            likeBy: {},
+            dislikeBy: {},
+        }
     }
     
 }

@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './assets/style/index.css';
 import App from './App';
 import dotenv from "dotenv"
 dotenv.config()

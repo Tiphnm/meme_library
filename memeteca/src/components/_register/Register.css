@@ -24,21 +24,6 @@ input{
     border: 2px; 
 }
 
-button{
-    font-family: 'Press Start 2P', cursive;
-    background-color: #8340FF;
-    color: white;
-    padding: 1pc;
-    margin-top: 5%;
-    border-radius: 10px;
-    border: 2px; 
-}
-
-button:hover{
-    color: #000000;
-    background-color: #FFFFFF;
-}
-
 .container-register {
     font-family: 'Rammetto One', cursive;
     display: flex;

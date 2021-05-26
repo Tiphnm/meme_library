@@ -1,17 +1,21 @@
-import React from 'react'
+import React, {useState} from 'react'
+import "./meme.css"
 
 interface MemeButtonProps {
-    symbol: String,
+    symbol: string,
+    data?: number,
     action: (arg0: any) => void
 }
 
-export default function MemeButton({symbol, action}: MemeButtonProps) {
-    const BtnClass= "far " + symbol + " fa-2x"
+export default function MemeButton({symbol, data, action}: MemeButtonProps) {
+
+    const iconClass= "fas " + symbol + " fa-2x action-icon"
     return (
-        <div>
-            <button className="like_button" onClick={action}>
-                <i className={BtnClass}></i>
+        <span>
+            <p>{ data  && data }</p>
+            <button className="button-action" onClick={action}>
+                <i className={iconClass}></i>
             </button>
-        </div>
+        </span>
     )
 }
