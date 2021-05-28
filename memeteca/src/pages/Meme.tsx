@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import {newMeme} from "../../typescript/types"
+import {newMeme} from "../typescript/types"
 import MemeButton from "./MemeButton"
 import axios from "axios"
 import dotenv from "dotenv"

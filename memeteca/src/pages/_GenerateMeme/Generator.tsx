@@ -2,7 +2,6 @@
 import * as React from 'react'
 import { render } from 'react-dom'
 import domtoimage from 'dom-to-image-more'
-import Header from "../_header/Header"
 //import domtoimage from 'dom-to-image'
 
 // Import components
@@ -13,7 +12,7 @@ import Result from './Result'
 // Import styles
 import './style.css'
 
-// App component
+// App components
 export default function Generator() {
   // Create refs
   let contentContainerRef = React.useRef<HTMLElement | null>(null)
@@ -106,7 +105,6 @@ export default function Generator() {
 
   return (
     <>
-    <Header option="home" />
     <div className="App">
       {/* Add Form component */}
       <Form

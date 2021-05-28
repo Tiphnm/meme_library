@@ -3,8 +3,10 @@ import React, {useState, useEffect} from 'react'
 import dotenv from "dotenv"
 import axios from "axios"
 /* Components */ 
-import Meme from "../_meme/Meme"
-import {newMeme} from "../../typescript/types"
+import Meme from "./Meme"
+import {newMeme} from "../typescript/types"
+/* assets */
+import loaderBlack from "../assets/img/loaderblack.gif"
 
 /* Env vars */ 
 dotenv.config()
@@ -18,7 +20,7 @@ let api_url: string
 environment == "DEV"? (api_url = api_dev) : (api_url = api_prod)
 
 
-export default function HotMemes (props: hotMemes) {
+export default function HotMemes () {
     const [loadingMemes, setLoadingMemes] = useState(true)
     const [memes, setMemes] = useState<newMeme[]>()
     
@@ -40,7 +42,7 @@ export default function HotMemes (props: hotMemes) {
     return (
         <div >
               {console.log(loadingMemes)} 
-           {loadingMemes? <img className="hotmeme" alt="loading..." src={props.loader} ></img>: 
+           {loadingMemes? <img className="hotmeme" alt="loading..." src={loaderBlack} ></img>: 
             memes!.map(meme => <Meme data={meme} key={meme._id}/>)}
             {console.log(memes)}
         </div>

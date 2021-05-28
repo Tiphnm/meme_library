@@ -8,11 +8,11 @@ interface btndata {
 }
 
 
-export default function Hbutton({name, link}: btndata){
+export default function Hbutton ({name, link}: btndata){
     return (
         <div>
             <Link to={link}>
-                <button className="button button1" >{name}</button>
+                <button className="hbutton" >{name}</button>
              </Link>
         </div>
     )
