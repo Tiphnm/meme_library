@@ -11,8 +11,6 @@ RUN npm install --production
 
 COPY . .
 
-ENV JOJO="hello_from_dockerfile"
-
 RUN npm run build:production
 
 EXPOSE 3000
