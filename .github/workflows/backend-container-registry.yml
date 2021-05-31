@@ -19,7 +19,16 @@ jobs:
         - run: |
             docker build ./server/. -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/server:latest
             docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/server:latest
-      
+
+      # Create the ENV for the FRONTEND
+        - name: Create env file
+          run: |
+            cd ./memeteca
+            touch .env
+            echo REACT_APP_API_PROD=${{ secrets.REACT_APP_API_PROD }}>> .env
+            echo REACT_APP_STORAGESASTOKEN=${{ secrets.REACT_APP_STORAGESASTOKEN }} >> .env
+            echo REACT_APP_SECRET_TOKEN=${{ secrets.REACT_APP_SECRET_TOKEN }} >> .env
+            cat .env
       # Build the FRONTEND  container 
         - name: 'Build and push FRONTEND image'
           uses: azure/docker-login@v1

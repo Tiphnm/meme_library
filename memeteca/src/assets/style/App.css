@@ -1,6 +1,19 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
+
+:root {
+  --primary: #550053;
+  --secondary: #8340FF;
+  --body: #292929;
 }
+
+*,::after, ::before {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--body);
+}
+
 a {
   color: inherit;
   font-size: inherit;
@@ -15,8 +28,11 @@ h1 {
   color: white;
   padding: 20px;
 }
+
+/* Header  */ 
+
 .container-header{
-  background-color: #550053;
+  background-color: var(--primary);
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -28,49 +44,25 @@ width: auto;
 max-width: 15rem;
 }
 
-
-.button-container button{
-  font-family: 'Press Start 2P', cursive;
+.actions-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row-reverse;
+  background-color: black;
+  padding: 1rem;
 }
 
-.button {
-  background-color: #4c7aaf; /* Green */
+/* button in header */ 
+.hbutton {
+  font-family: 'Rubik', sans-serif;
+  padding: 0.3rem;
   border: none;
+  outline: none;
   color: white;
-  padding: 16px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  transition-duration: 0.4s;
-  cursor: pointer;
-  
-}
-.button1 {
-  color:#FFFFFF; 
-  border: 2px solid #8340FF;
-  border-radius: 1rem;
-  background-color: #8340FF;
-}
+  font-weight: 700;
 
-.button1:hover {
-  color: #000000;
-  background-color: #FFFFFF;
-}
 
-.button2 {
-  background-color: #8340FF;
-  color: #FFFFFF; 
-  border: 2px solid #8340FF;
-  border-radius: 1rem;
 }
-
-.button2:hover {
-  color:#000000;
-  background-color: #FFFFFF;
-}
-
 .container-upload{
   background-color: #333333;
 }
@@ -83,10 +75,57 @@ max-width: 15rem;
 .img-item{
   padding-bottom: 1rem;
 }
+ /* Responsive menu */ 
 
-a {
-  padding: inherit;
-  margin: inherit;
-  display: inherit;
-  size: inherit;
+.menu-toggle {
+  color: white;
+  background-color: inherit;
+  padding: 0.5rem;
+  transition: 0.2s;
+  z-index: 2;
+}
+
+.menu-toggle:focus {
+  transition-timing-function: ease-in-out;
+  transition: 0.2s;
+  transform: rotate(270deg) ;
+}
+
+/* Menu that will go out  */ 
+.noir {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #292929;
+  height: 100vh; 
+  z-index: -1;
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px)  {
+  html {
+    width: 100%;
+ }
+  body {
+    background-color: coral;
+    width: inherit;
+  }
+
+  header {
+    width: 100%;
+  }
+
+  .actions-container{
+    display: none;
+  }
+/* meme */ 
+  .container-meme {
+    width: 100%;
+  }
+  .meme {
+    width: 90%;
+  }
+  .container-buttons{
+    width: 90%;
+  }
 }

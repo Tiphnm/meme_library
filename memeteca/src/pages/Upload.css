@@ -2,9 +2,32 @@
     margin: 0;
     padding: 0;
   }
-body{
-    background-color: #000000;
+.photo{
+    font-family: 'Press Start 2P', cursive;
+    color: #FFFFFF;
+    padding-top: 2rem;
 }
+
+.title-blob{
+    font-family: 'Press Start 2P', cursive;
+    color: #FFFFFF;
+    padding-top: 2rem;
+    
+}
+
+.list{
+    list-style-type: none;
+}
+
+.button-upload{
+    color:#FFFFFF; 
+    border: 2px solid #8340FF;
+    border-radius: 1rem;
+    background-color: #8340FF;
+    padding: 14px 28px;
+    font-family: 'Press Start 2P', cursive;
+}
+
 .container{
     display: flex;
 }
@@ -19,8 +42,9 @@ body{
     color: white;
 }
 .container-main img{
-    
     padding-top: 1rem;
+    width: 50%;
+    height: 100%;
 }
 .container-meme{
     width: 100%;
@@ -72,4 +96,8 @@ button{
 
 .thumb-meme{
     padding-left: 1rem;
+    border-radius: 10px;
 }
+
+
+

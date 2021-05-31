@@ -3,9 +3,10 @@ import React, {useState, useEffect} from 'react'
 import dotenv from "dotenv"
 import axios from "axios"
 /* Components */ 
-import Meme from "../_meme/Meme"
-/* Assets */ 
-import './_hotmemes.css';
+import Meme from "./Meme"
+import {newMeme} from "../typescript/types"
+/* assets */
+import loaderBlack from "../assets/img/loaderblack.gif"
 
 /* Env vars */ 
 dotenv.config()
@@ -19,17 +20,9 @@ let api_url: string
 environment == "DEV"? (api_url = api_dev) : (api_url = api_prod)
 
 
-
-type memeType = {
-    _id: String,
-    id: Number,
-    name: String,
-    url: String,
-  };
-
-export default function HotMemes (props: hotMemes) {
+export default function HotMemes () {
     const [loadingMemes, setLoadingMemes] = useState(true)
-    const [memes, setMemes] = useState<any[]>([])
+    const [memes, setMemes] = useState<newMeme[]>()
     
     useEffect(() => {
         async function getData()  {
@@ -47,12 +40,11 @@ export default function HotMemes (props: hotMemes) {
     }, [loadingMemes])
 
     return (
-      
         <div >
               {console.log(loadingMemes)} 
-           {loadingMemes? <img className="hotmeme" alt="loading..." src={props.loader} ></img>: 
-            memes.map( (meme) => {
-              return  <Meme data={meme} key={meme._id}/>           })}
+           {loadingMemes? <img className="hotmeme" alt="loading..." src={loaderBlack} ></img>: 
+            memes!.map(meme => <Meme data={meme} key={meme._id}/>)}
+            {console.log(memes)}
         </div>
     )
 }

@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 /* Local Components */
 //import Header from './components/_header/Header'
-import Upload from "./components/_upload/Upload";
-import HotMemes from "./components/_hotmemes/Hotmemes";
-import Generator from "./components/_GenerateMeme/Generator";
-import Login from "./components/_login/Login";
-import Register from "./components/_register/Register";
-import Hbutton from "./components/_header/Hbutton";
+import Upload from "./pages/Upload";
+import HotMemes from "./pages/Hotmemes";
+import Generator from "./pages/_GenerateMeme/Generator";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Hbutton from "./components/Hbutton";
+import Burguer from "./components/Burguer"
+
 /* TypeScript types  */
 import { decodedToken } from "./typescript/types";
 /* Libs */
@@ -24,7 +26,6 @@ import dotenv from "dotenv"; // Dotenv is not effective  IN REACT
 import env from "@beam-australia/react-env"; // NEW ENV LIB
 /* Assets */
 import memetecaV2 from "./assets/img/MEMETECAV2.gif";
-import loaderBlack from "./assets/img/loaderblack.gif";
 import "./assets/style/App.css";
 
 /* Env vars */
@@ -67,20 +68,20 @@ function App(props: any) {
   /* */
   return (
     <Router>
-      <div className="App">
- 
         {/* ----------- Header and Nav Bar ---------------- */}
-        <div className="container-header">
-          <Link to="/" className="logo">
-            <img src={memetecaV2} />
-          </Link>
-          <div className="actions-manager">
+        <nav className="container-header">
+
+          <div className="logo">
+            <Link to="/">
+              <img src={memetecaV2} />
+            </Link>
+          </div>
+
+         
+        
+          <div className="actions-container">
             <Hbutton name="CREATE MEME" link="/create" />
             <Hbutton name="UPLOAD" link="/upload" />
-          
-           
-          </div>
-          <div className="actions-manager">
           {logged ? "":  <Hbutton name="LOGIN" link="/login" /> }
           {logged ? (
                 <div>
@@ -95,7 +96,9 @@ function App(props: any) {
             {logged ? "": <Hbutton name="REGISTER" link="/register" /> }
    
           </div>
-        </div>
+          {/*  Responsive burguer Menu */}
+                  <Burguer />
+        </nav>
 
         {/* -------------- Header and Nav Bar----------------- */}
 
@@ -104,7 +107,7 @@ function App(props: any) {
             <Route exact path="/">
               {/*  LOGOUT */}
             
-              <HotMemes loader={loaderBlack} />
+              <HotMemes />
             </Route>
 
             {/* LOGIN SITE */}
@@ -127,7 +130,7 @@ function App(props: any) {
   
             {console.log(env("SECRET_TOKEN"))}
             {console.log(process.env.REACT_APP_SECRET_TOKEN)}
-              <HotMemes loader={loaderBlack} />
+              <HotMemes />
             </Route>
 
             {/* Upload */}
@@ -143,7 +146,6 @@ function App(props: any) {
 
           </Switch>
         </div>
-      </div>
     </Router>
   );
 }
