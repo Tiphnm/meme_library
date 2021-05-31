@@ -10,14 +10,13 @@ export default function Register() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    const handleRegister = async () => {
+    const handleRegister = async (fields: any) => {
         const url = "http://localhost:4000/register"
         await axios.post(url, {
             headers: { 'Content-Type': 'application/json' },
             credentials: {
-                username,
-                password
-            }
+                username: fields.firstName,
+                password: fields.lastName }
         })
     }
 
@@ -54,7 +53,7 @@ export default function Register() {
     return (
     <div className="container-register">
         <h1 className="title">New memetequero! 😎 </h1>
-        <Formik initialValues={userData} validationSchema={validateDate} onSubmit={handleSubmit} render={ ({errors, status, touched}) => (
+        <Formik initialValues={userData} validationSchema={validateDate} onSubmit={handleRegister} render={ ({errors, status, touched}) => (
 
             <Form className="register-form ">
 
