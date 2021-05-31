@@ -23,6 +23,7 @@ jobs:
       # Create the ENV for the FRONTEND
         - name: Create env file
           run: |
+            cd ./memeteca
             touch .env
             echo REACT_APP_API_PROD=${{ REACT_APP_API_PROD }}>> .env
             echo REACT_APP_STORAGESASTOKEN=${{ REACT_APP_STORAGESASTOKEN }} >> .env
