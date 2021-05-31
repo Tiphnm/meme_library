@@ -3,7 +3,7 @@ import {Link, LinkProps} from "react-router-dom"
 
 interface btndata {
     name: string,
-    link: any,
+    link: string,
   
 }
 

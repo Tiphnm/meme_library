@@ -48,22 +48,31 @@ max-width: 15rem;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row-reverse;
-  background-color: black;
   padding: 1rem;
 }
 
 /* button in header */ 
+
 .hbutton {
   font-family: 'Rubik', sans-serif;
-  padding: 0.3rem;
+  padding: 0.5rem;
   border: none;
   outline: none;
   color: white;
   font-weight: 700;
-
-
+  background-color: #3a0035;
+  border: 2px solid #ffffff;
+  margin: 0.5rem;
+  display: inherit;
 }
+
+.hbutton:hover{
+  background-color: #8340FF;
+  transition: ease-in-out 0.3s;
+}
+
 .container-upload{
+  padding: 1rem;
   background-color: #333333;
 }
 
@@ -78,6 +87,7 @@ max-width: 15rem;
  /* Responsive menu */ 
 
 .menu-toggle {
+  display: none;
   color: white;
   background-color: inherit;
   padding: 0.5rem;
@@ -93,32 +103,39 @@ max-width: 15rem;
 
 /* Menu that will go out  */ 
 .noir {
+  display: none;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   background-color: #292929;
   height: 100vh; 
-  z-index: -1;
+  z-index: 2;
 }
 
-@media only screen and (min-device-width : 320px) and (max-device-width : 480px)  {
+@media only screen and (min-device-width : 320px) and (max-device-width : 600px)  {
   html {
     width: 100%;
  }
   body {
-    background-color: coral;
+    background-color: rgb(61, 61, 61);
     width: inherit;
   }
+  
+  /* header */ 
 
   header {
     width: 100%;
   }
-
+  .menu-toggle {
+   display: flex;
+ }
   .actions-container{
+    background-color: white;
     display: none;
   }
-/* meme */ 
+
+  /* meme */ 
   .container-meme {
     width: 100%;
   }

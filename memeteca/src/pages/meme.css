@@ -5,6 +5,8 @@
     --big-meme: 25rem ;
 }
 
+/* meme feed */ 
+
 img {
     width: 1rem;
     padding: 1rem; 
@@ -56,6 +58,7 @@ p {
     padding: 0.5rem;
     margin: 0.1rem 1rem
 }
+
 /* Like button */
 .container-buttons span:first-of-type{
     padding-top: 0;
