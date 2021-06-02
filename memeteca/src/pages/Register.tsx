@@ -1,16 +1,16 @@
-import React from 'react';
-import { Formik, Field, Form, ErrorMessage } from 'formik';
+import React, {useState} from 'react';
+import { Formik, Field, Form, ErrorMessage} from 'formik';
 import * as Yup from 'yup';
 import axios from "axios"
 import './Register.css'
 
 export default function Register() {
-
-
+    const [error, setError] = useState()
 
     /* What do we do after submitting the form */ 
     const handleRegister = async ({firstName, lastName, email, password}: any, actions: any) => {
-        const url = "http://localhost:4000/register"
+        actions.setSubmitting(true)
+        var url = "http://localhost:4000/register"
         try {
             const registerData = await axios.post(url, {
                 headers: { 'Content-Type': 'application/json' },
@@ -20,11 +20,20 @@ export default function Register() {
                     email: email,
                     password: password
                  }
+           
             })
-            console.log(registerData)
+            registerData? actions.setSubmitting(true): " "
+            console.log(registerData.status)
+           
 
         } catch (error) {
-            console.log("CATCHERRR " + error)
+
+            if (error.response) {
+                //alert(JSON.stringify(error.response.data.message))
+                console.log(JSON.stringify(error.response.data))
+                setError(error.response.data.message)
+            }
+            //actions.resetForm()
         }
      
     }
@@ -58,7 +67,7 @@ export default function Register() {
     <div className="container-register">
         <h1 className="title">New memetequero! 😎 </h1>
         <Formik initialValues={userData} validationSchema={validateDate} onSubmit={handleRegister} render={ ({errors, status, touched}) => (
-
+    
             <Form className="register-form ">
 
             <div className="form-group">
@@ -79,6 +88,7 @@ export default function Register() {
                 <label htmlFor="email">Email</label>
                 <Field name="email" type="text" className={'form-control' + (errors.email && touched.email ? ' is-invalid' : '')} />
                 <ErrorMessage name="email" component="div" className="invalid-feedback" />
+                {error?<p>{error}</p> : ""}
             </div>
 
             <div className="form-group">
@@ -95,7 +105,7 @@ export default function Register() {
 
             <div className="action-group-form">
             <button type="submit" className="btn-form">Register</button>
-            <button type="reset" className="btn-form opaque">Reset</button>
+            <button type="reset" className="btn-form opaque" >Reset</button>
             </div>  
         </Form>
         ) }>
