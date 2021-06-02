@@ -12,13 +12,16 @@ const uniqueValidator = require('mongoose-unique-validator')
 const SALT_WORK_FACTOR = 10;
 
 const userSchema = new mongoose.Schema({
-    username: { type: String, required: true, index: true, unique: true  },
-    password: { type: String, required: true }
+    fName: { type: String, required: true},
+    lName: { type: String, required: true },
+    mail: { type: String, required: true, index: true, unique: true },
+    pass: { type: String, required: true }
+
 })
 
 userSchema.plugin(uniqueValidator, {message: 'is already taken.'})
 
-const User =  mongoose.connection.models[userCollection] || mongoose.model(userCollection, userSchema)
+export const User =  mongoose.connection.models[userCollection] || mongoose.model(userCollection, userSchema)
 /// 
 async  function connect() {
     console.log("Connecting")
@@ -56,53 +59,40 @@ try {
 
 /*  ----------- REGISTER  -------------------- */
 
-async function register_user(getUser,getPass) {
-    console.log(getUser, getPass)
-    let status = ""
-
-    const newUser = new User({
-        username: getUser,
-        password: getPass
-    })
-
-    try {
-         status = await newUser.save( (err, myUser) => {
-            if (err) {
-                throw new Error(err)
-            } else {
-                console.log(myUser.username)   
-                console.log("New user registered")
-            }
-            return 0
-        })
-       
-    }  catch (error) {
-        console.log("ERROR 2: " + error)
-        return 0
-    }
-    return status 
-}
 
 /*  ----------- LOGIN -------------------- */ 
 
-async function loginUser(user: string, pass: string) {
-    
+async function searchUserQuery(userMail) {
+    var promise = await User.findOne({mail: userMail}).exec()
+    return promise
+}
+
+
+async function loginUser(email: string, pass: string) { 
+    /* 
+let data;
 interface myUser {
-    username: String,
+    mail: String,
     password: String
 }
 
 const logUser = new User({
-    username: user,
+    mail: email,
     password: pass
 })
 
+let userData = await User.findOne({mail: email}).exec((err,user) => {
+    console.log(user)
+    return JSON.stringify(user);
+    });
+
+    console.log("mydata" + userData)
+*/ 
+
 try {
-    let data = await User.findOne({username: user});
-    if(!data) {
-      throw new Error('no document found');
-    }
-    return data;
+    var promise = await searchUserQuery(email) 
+    return promise;
+
 } catch (err) {
     if (err) console.error("User not found")
     return null;
@@ -110,4 +100,4 @@ try {
 }
 
 
-export {loginUser, connect, display_users, register_user} 
+export {loginUser, connect, display_users} 

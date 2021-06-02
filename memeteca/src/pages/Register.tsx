@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axios from "axios"
@@ -6,18 +6,27 @@ import './Register.css'
 
 export default function Register() {
 
-    const [username, setUsername] = useState('')
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
 
-    const handleRegister = async (fields: any) => {
+
+    /* What do we do after submitting the form */ 
+    const handleRegister = async ({firstName, lastName, email, password}: any, actions: any) => {
         const url = "http://localhost:4000/register"
-        await axios.post(url, {
-            headers: { 'Content-Type': 'application/json' },
-            credentials: {
-                username: fields.firstName,
-                password: fields.lastName }
-        })
+        try {
+            const registerData = await axios.post(url, {
+                headers: { 'Content-Type': 'application/json' },
+                credentials: {
+                    firstName: firstName,
+                    lastName: lastName,
+                    email: email,
+                    password: password
+                 }
+            })
+            console.log(registerData)
+
+        } catch (error) {
+            console.log("CATCHERRR " + error)
+        }
+     
     }
 
     /*  Initialize our initial state data for formik*/
@@ -29,7 +38,7 @@ export default function Register() {
         confirmPassword: ""
     }
 
-    /* A serie of conditios that Yup can accomplish easily */
+    /* A serie of conditions that Yup can accomplish easily */
     const validateDate = Yup.object().shape({
         firstName: Yup.string()
             .required('First Name is required'),
@@ -44,11 +53,6 @@ export default function Register() {
         confirmPassword: Yup.string()
             .oneOf([Yup.ref('password'), null], 'Passwords must match')
             .required('Confirm Password is required')})
-
-    /* What do we do after submitting the form */ 
-    function handleSubmit(fields: any) {
-        alert('SUCCESS!! :-)\n\n' + JSON.stringify(fields, null, 4))
-    }
 
     return (
     <div className="container-register">
@@ -92,8 +96,7 @@ export default function Register() {
             <div className="action-group-form">
             <button type="submit" className="btn-form">Register</button>
             <button type="reset" className="btn-form opaque">Reset</button>
-            </div>
-        
+            </div>  
         </Form>
         ) }>
 
@@ -101,83 +104,3 @@ export default function Register() {
     </div>
     )
 }
-
-
-
-
- 
-//  const validate = values => {
-//    const errors = {};
- 
-//    if (!values.firstName) {
-//      errors.firstName = 'Required';
-//    } else if (values.firstName.length > 15) {
-//      errors.firstName = 'Must be 15 characters or less';
-//    }
- 
-//    if (!values.lastName) {
-//      errors.lastName = 'Required';
-//    } else if (values.lastName.length > 20) {
-//      errors.lastName = 'Must be 20 characters or less';
-//    }
- 
-//    if (!values.email) {
-//      errors.email = 'Required';
-//    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-//      errors.email = 'Invalid email address';
-//    }
- 
-//    return errors;
-//  };
- 
-//  const SignupForm = () => {
-//    const formik = useFormik({
-//      initialValues: {
-//        firstName: '',
-//        lastName: '',
-//        email: '',
-//      },
-//      validate,
-//      onSubmit: values => {
-//        alert(JSON.stringify(values, null, 2));
-//      },
-//    });
-//    return (
-//      <form onSubmit={formik.handleSubmit}>
-//        <label htmlFor="firstName">First Name</label>
-//        <input
-//          id="firstName"
-//          name="firstName"
-//          type="text"
-//          onChange={formik.handleChange}
-//          onBlur={formik.handleBlur}
-//          value={formik.values.firstName}
-//        />
-//        {formik.errors.firstName ? <div>{formik.errors.firstName}</div> : null}
- 
-//        <label htmlFor="lastName">Last Name</label>
-//        <input
-//          id="lastName"
-//          name="lastName"
-//          type="text"
-//          onChange={formik.handleChange}
-//          onBlur={formik.handleBlur}
-//          value={formik.values.lastName}
-//        />
-//        {formik.errors.lastName ? <div>{formik.errors.lastName}</div> : null}
- 
-//        <label htmlFor="email">Email Address</label>
-//        <input
-//          id="email"
-//          name="email"
-//          type="email"
-//          onChange={formik.handleChange}
-//          onBlur={formik.handleBlur}
-//          value={formik.values.email}
-//        />
-//        {formik.errors.email ? <div>{formik.errors.email}</div> : null}
- 
-//        <button type="submit">Submit</button>
-//      </form>
-//    );
-//  };*****/
