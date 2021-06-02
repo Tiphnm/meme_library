@@ -1,13 +1,14 @@
-import { connect, display_users, register_user, loginUser} from "./database/db"
+/* Import NPM Modules */ 
+import express from "express"
+import dotenv from "dotenv"
+import cors from "cors"
+
 /* Import routes */ 
 import getMemes from "./Routes/hot_display"
 import deleteMemes from "./Routes/deleteMeme"
 import registerRouter from './Routes/register';
 import loginRoute from './Routes/login';
-import express from "express"
-import dotenv from "dotenv"
-import cors from "cors"
-
+import { connect, display_users} from "./database/db" 
 
 dotenv.config()
 

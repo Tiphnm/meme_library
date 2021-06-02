@@ -1,24 +1,44 @@
-import React, { useState } from 'react';
-import { Formik, Field, Form, ErrorMessage } from 'formik';
+import React, {useState} from 'react';
+import { Formik, Field, Form, ErrorMessage} from 'formik';
+import {useHistory} from "react-router-dom"
 import * as Yup from 'yup';
 import axios from "axios"
-import './Register.css'
+import '../assets/style/Form.css'
 
 export default function Register() {
+    const [error, setError] = useState()
+    let history = useHistory()
 
-    const [username, setUsername] = useState('')
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+    /* What do we do after submitting the form */ 
+    const handleRegister = async ({firstName, lastName, email, password}: any, actions: any) => {
+        actions.setSubmitting(true)
+        var url = "http://localhost:4000/register"
+        try {
+            const registerData = await axios.post(url, {
+                headers: { 'Content-Type': 'application/json' },
+                credentials: {
+                    firstName: firstName,
+                    lastName: lastName,
+                    email: email,
+                    password: password
+                 }
+           
+            })
+            registerData? actions.setSubmitting(false): " "
+            console.log(registerData.status)
+            history.push("/")
+           
 
-    const handleRegister = async () => {
-        const url = "http://localhost:4000/register"
-        await axios.post(url, {
-            headers: { 'Content-Type': 'application/json' },
-            credentials: {
-                username,
-                password
+        } catch (error) {
+
+            if (error.response) {
+                //alert(JSON.stringify(error.response.data.message))
+                console.log(JSON.stringify(error.response.data))
+                setError(error.response.data.message)
             }
-        })
+            //actions.resetForm()
+        }
+     
     }
 
     /*  Initialize our initial state data for formik*/
@@ -30,7 +50,7 @@ export default function Register() {
         confirmPassword: ""
     }
 
-    /* A serie of conditios that Yup can accomplish easily */
+    /* A serie of conditions that Yup can accomplish easily */
     const validateDate = Yup.object().shape({
         firstName: Yup.string()
             .required('First Name is required'),
@@ -46,16 +66,11 @@ export default function Register() {
             .oneOf([Yup.ref('password'), null], 'Passwords must match')
             .required('Confirm Password is required')})
 
-    /* What do we do after submitting the form */ 
-    function handleSubmit(fields: any) {
-        alert('SUCCESS!! :-)\n\n' + JSON.stringify(fields, null, 4))
-    }
-
     return (
     <div className="container-register">
         <h1 className="title">New memetequero! 😎 </h1>
-        <Formik initialValues={userData} validationSchema={validateDate} onSubmit={handleSubmit} render={ ({errors, status, touched}) => (
-
+        <Formik initialValues={userData} validationSchema={validateDate} onSubmit={handleRegister} render={ ({errors, status, touched}) => (
+    
             <Form className="register-form ">
 
             <div className="form-group">
@@ -76,6 +91,7 @@ export default function Register() {
                 <label htmlFor="email">Email</label>
                 <Field name="email" type="text" className={'form-control' + (errors.email && touched.email ? ' is-invalid' : '')} />
                 <ErrorMessage name="email" component="div" className="invalid-feedback" />
+                {error?<p className="invalid-feedback" >{error}</p> : ""}
             </div>
 
             <div className="form-group">
@@ -92,9 +108,8 @@ export default function Register() {
 
             <div className="action-group-form">
             <button type="submit" className="btn-form">Register</button>
-            <button type="reset" className="btn-form opaque">Reset</button>
-            </div>
-        
+            <button type="reset" className="btn-form opaque" >Reset</button>
+            </div>  
         </Form>
         ) }>
 
@@ -102,83 +117,3 @@ export default function Register() {
     </div>
     )
 }
-
-
-
-
- 
-//  const validate = values => {
-//    const errors = {};
- 
-//    if (!values.firstName) {
-//      errors.firstName = 'Required';
-//    } else if (values.firstName.length > 15) {
-//      errors.firstName = 'Must be 15 characters or less';
-//    }
- 
-//    if (!values.lastName) {
-//      errors.lastName = 'Required';
-//    } else if (values.lastName.length > 20) {
-//      errors.lastName = 'Must be 20 characters or less';
-//    }
- 
-//    if (!values.email) {
-//      errors.email = 'Required';
-//    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-//      errors.email = 'Invalid email address';
-//    }
- 
-//    return errors;
-//  };
- 
-//  const SignupForm = () => {
-//    const formik = useFormik({
-//      initialValues: {
-//        firstName: '',
-//        lastName: '',
-//        email: '',
-//      },
-//      validate,
-//      onSubmit: values => {
-//        alert(JSON.stringify(values, null, 2));
-//      },
-//    });
-//    return (
-//      <form onSubmit={formik.handleSubmit}>
-//        <label htmlFor="firstName">First Name</label>
-//        <input
-//          id="firstName"
-//          name="firstName"
-//          type="text"
-//          onChange={formik.handleChange}
-//          onBlur={formik.handleBlur}
-//          value={formik.values.firstName}
-//        />
-//        {formik.errors.firstName ? <div>{formik.errors.firstName}</div> : null}
- 
-//        <label htmlFor="lastName">Last Name</label>
-//        <input
-//          id="lastName"
-//          name="lastName"
-//          type="text"
-//          onChange={formik.handleChange}
-//          onBlur={formik.handleBlur}
-//          value={formik.values.lastName}
-//        />
-//        {formik.errors.lastName ? <div>{formik.errors.lastName}</div> : null}
- 
-//        <label htmlFor="email">Email Address</label>
-//        <input
-//          id="email"
-//          name="email"
-//          type="email"
-//          onChange={formik.handleChange}
-//          onBlur={formik.handleBlur}
-//          value={formik.values.email}
-//        />
-//        {formik.errors.email ? <div>{formik.errors.email}</div> : null}
- 
-//        <button type="submit">Submit</button>
-//      </form>
-//    );
-//  };*****/

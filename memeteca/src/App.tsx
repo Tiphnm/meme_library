@@ -115,7 +115,7 @@ function App(props: any) {
               {logged ? (
                 <Redirect to="/profile" />
               ) : (
-                <Login setToken={setToken} loginStatus={logged} />
+                <Login setToken={setToken} loginStatus={setLogged} />
               )}
             </Route>
 

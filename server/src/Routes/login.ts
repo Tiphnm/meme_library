@@ -12,18 +12,12 @@ interface Credentials {
 }
 
 
-/* Optional block */ 
-function isValid(input) {
-    if (input.lenght > 1 )return true
-}
-/* Optional block */ 
-
 export default async function loginRoute(req: Request ,res: Response) {
 
     if (req.body.credentials) {
         // If credentials are passed
         console.log("credentials received")
-        console.log("API CREDENTIALS " + req.body.credentials)
+        console.log("API CREDENTIALS " + JSON.stringify(req.body.credentials))
         // Now check if those credentials are not unEmpty values
         if (req.body.credentials.username && req.body.credentials.password) {
         
@@ -43,7 +37,7 @@ export default async function loginRoute(req: Request ,res: Response) {
             } else if (fetchCredentials) {
              // User Found 
 
-                 if (fetchCredentials.password == password) {
+                 if (fetchCredentials.pass == password) {
                      // User ok + pass ok 
 
                      console.log("Login Success")
