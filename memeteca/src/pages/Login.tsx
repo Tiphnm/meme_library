@@ -33,6 +33,7 @@ export default function Login(props: any) {
   const [error, setError] = useState("")
  
 async function loginUser() {
+
   let data = await axios.post(api_url+"/login", {
     headers:{'Content-Type' : 'application/json'},
     credentials: {
@@ -61,6 +62,9 @@ async function handleSubmit(e: any) {
   if (loginData) {
     props.setToken(loginData['data'])
     console.log(loginData['data'])
+    //history.push("/")
+    setLogin(true)
+    props.loginStatus(true)
     history.push("/")
   }
 
@@ -73,7 +77,10 @@ async function handleSubmit(e: any) {
       <h1 className="title">LOGIN FORM </h1>
       {error==""? "": <p>{error}</p>}
       <br />
-      <form className="form" onSubmit={handleSubmit}>
+      <form className="form" onSubmit={ 
+        handleSubmit
+        }>
+
         <h1 className="title-login">Please Sign in</h1>
         <div className="form_username">
           <h3>Username</h3>

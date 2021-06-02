@@ -1,4 +1,4 @@
-/* h1 */ 
+/* --------------  REGISTER FORM -----------------  */ 
 
 .title{
     font-family: 'Rubik', sans-serif;
@@ -87,9 +87,6 @@ input{
     background-color: rgb(211, 211, 211);
 }
 
-
-
-
 /* VALIDATIONS */ 
 
 .invalid-feedback{
@@ -101,3 +98,5 @@ input{
 .is-invalid{
     border: 1px solid red;
 }
+
+/* ----------------- LOGIN FORM --------------------- */

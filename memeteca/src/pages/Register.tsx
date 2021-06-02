@@ -1,11 +1,13 @@
 import React, {useState} from 'react';
 import { Formik, Field, Form, ErrorMessage} from 'formik';
+import {useHistory} from "react-router-dom"
 import * as Yup from 'yup';
 import axios from "axios"
-import './Register.css'
+import '../assets/style/Form.css'
 
 export default function Register() {
     const [error, setError] = useState()
+    let history = useHistory()
 
     /* What do we do after submitting the form */ 
     const handleRegister = async ({firstName, lastName, email, password}: any, actions: any) => {
@@ -22,8 +24,9 @@ export default function Register() {
                  }
            
             })
-            registerData? actions.setSubmitting(true): " "
+            registerData? actions.setSubmitting(false): " "
             console.log(registerData.status)
+            history.push("/")
            
 
         } catch (error) {
@@ -88,7 +91,7 @@ export default function Register() {
                 <label htmlFor="email">Email</label>
                 <Field name="email" type="text" className={'form-control' + (errors.email && touched.email ? ' is-invalid' : '')} />
                 <ErrorMessage name="email" component="div" className="invalid-feedback" />
-                {error?<p>{error}</p> : ""}
+                {error?<p className="invalid-feedback" >{error}</p> : ""}
             </div>
 
             <div className="form-group">
