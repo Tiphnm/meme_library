@@ -6,7 +6,11 @@ import mongoose from "mongoose"
 const memeSchema = new mongoose.Schema({
     id: { type: String },
     name: { type: String, required: true, index: { unique: true } },
-    url: { type: String, required: true }
+    url: { type: String, required: true },
+    date: {
+        type: Date,
+        default: Date.now
+    }
 })
 
 /* Create a mongoose model that connects the Schema with the collection */
@@ -24,12 +28,8 @@ let All_memes
 export default async function getMemes(req, res) {
     try {
 
-        await Meme.find((err, res) => {
-            if(err) console.log(err)
-            All_memes = res
-        })
-
-        res.send(All_memes)
+        All_memes =  await Meme.find().sort({date:-1})
+          res.send(All_memes)
     } catch (error) {
         console.log(error)   
     }

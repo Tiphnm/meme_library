@@ -21,6 +21,7 @@ export type newMeme = {
             likeBy: {},
             dislikeBy: {},
         }
+        date: Date
     }
     
 }
