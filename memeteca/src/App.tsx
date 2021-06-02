@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 /* Local Components */
-//import Header from './components/_header/Header'
 import Upload from "./pages/Upload";
 import HotMemes from "./pages/Hotmemes";
 import Generator from "./pages/_GenerateMeme/Generator";
@@ -8,6 +7,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Hbutton from "./components/Hbutton";
 import Burguer from "./components/Burguer"
+import ProfileBtn from "./components/ProfileBtn"
 
 /* TypeScript types  */
 import { decodedToken } from "./typescript/types";
@@ -30,39 +30,35 @@ import "./assets/style/App.css";
 
 /* Env vars */
 dotenv.config();
-const jwtSecret = process.env.REACT_APP_SECRET_TOKEN || "memeteca";
-const jojo = process.env.JOJO
+const jwtSecret = process.env.REACT_APP_SECRET_TOKEN
 //console.log("SECRET "+jwtSecret)
 
 /* Props: any just for testing, will be removed  */
 function App(props: any) {
   const { token, setToken } = useToken();
   const [logged, setLogged] = useState(false);
-  console.log(jojo)
+
   console.log("APP: Where is my token " + token);
 
-  /* LOGOUT FUNCTION */
-  const removeToken = (token: String | null) => {
-    localStorage.removeItem("token");
-    setToken(null!);
-    window.location.reload();
-  };
-  {
-    console.log("LOGIN STATUS: " + logged);
-  }
-
   useEffect(() => {
-    token == null ? setLogged(false) : setLogged(true);
-  }, []);
+   token && setLogged(true)
+
+  }, [token])
+  
+  
+  console.log("LOGIN STATUS: " + logged);
+  
 
   /*   REDIRECT */
 
   let history = useHistory();
 
   /* GET USERNAME IF LOGGED */
-  let username;
+  let username: decodedToken;
+
   if (token) {
-    username = jwt.verify(token, jwtSecret) as decodedToken;
+    username = jwt.verify(token, jwtSecret);
+    console.log("USERNAME IS " + username.user)
   }
 
   /* */
@@ -72,32 +68,23 @@ function App(props: any) {
         <nav className="container-header">
 
           <div className="logo">
-            <Link to="/">
-              <img src={memetecaV2} />
-            </Link>
+            <Link to="/"><img src={memetecaV2} /></Link>
           </div>
-
-         
-        
+      
           <div className="actions-container">
+            {/*  Profile Button  */}
+            {logged && <ProfileBtn user={username!.user} token={token} />}
+
             <Hbutton name="CREATE MEME" link="/create" />
             <Hbutton name="UPLOAD" link="/upload" />
-          {logged ? "":  <Hbutton name="LOGIN" link="/login" /> }
-          {logged ? (
-                <div>
-                  <br /> You are logged as: {username?.user} <br />
-                  <button onClick={() => { removeToken(token);}} >
-                    Click here to logout
-                  </button>
-                </div>
-              ) : (
-                ""
-              )}
-            {logged ? "": <Hbutton name="REGISTER" link="/register" /> }
-   
+            {!logged && <>
+            <Hbutton name="REGISTER" link="/register" />
+            <Hbutton name="LOGIN" link="/login" /> </> }
+
           </div>
           {/*  Responsive burguer Menu */}
-                  <Burguer />
+          <Burguer />
+          
         </nav>
 
         {/* -------------- Header and Nav Bar----------------- */}
@@ -106,14 +93,14 @@ function App(props: any) {
           <Switch>
             <Route exact path="/">
               {/*  LOGOUT */}
-            
-              <HotMemes />
+             {console.log("jojooo" + logged)}
+              <HotMemes isLogged={logged} />
             </Route>
 
             {/* LOGIN SITE */}
             <Route path="/login">
               {logged ? (
-                <Redirect to="/profile" />
+                <Redirect to="/" />
               ) : (
                 <Login setToken={setToken} loginStatus={setLogged} />
               )}
@@ -127,10 +114,10 @@ function App(props: any) {
             {/* Hot memes principal section  */}
 
             <Route path="/home">
-  
-            {console.log(env("SECRET_TOKEN"))}
-            {console.log(process.env.REACT_APP_SECRET_TOKEN)}
-              <HotMemes />
+   
+            {/* console.log(env("SECRET_TOKEN")) */}
+            {/*console.log(process.env.REACT_APP_SECRET_TOKEN) */}
+              <HotMemes isLogged={logged} />
             </Route>
 
             {/* Upload */}

@@ -3,6 +3,7 @@
 :root {
   --primary: #550053;
   --secondary: #8340FF;
+  --darker: #3a0035;
   --body: #292929;
 }
 
@@ -50,7 +51,18 @@ max-width: 15rem;
   flex-direction: row-reverse;
   padding: 1rem;
 }
+/* Profile  Button in header */
 
+.profile-btn {
+  margin-left: 0.8rem;
+  background-color: var(--darker);
+  border: 2px solid #fff;
+  padding: 1rem
+}
+
+.btn-logout {
+  background-color:  #e7e7e7;
+}
 /* button in header */ 
 
 .hbutton {
@@ -60,14 +72,14 @@ max-width: 15rem;
   outline: none;
   color: white;
   font-weight: 700;
-  background-color: #3a0035;
+  background-color:var(--darker);
   border: 2px solid #ffffff;
   margin: 0.5rem;
   display: inherit;
 }
 
 .hbutton:hover{
-  background-color: #8340FF;
+  background-color:  var(--secondary);
   transition: ease-in-out 0.3s;
 }
 

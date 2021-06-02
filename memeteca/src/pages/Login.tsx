@@ -1,25 +1,14 @@
 import React, {useState } from 'react';
 /*  Components */
-//import Header from '../_header/Header'
+import getApi from '../typescript/GetApi'
+
 /* Libs */ 
 import { BrowserRouter as Router, Switch, Route, Link, Redirect, useHistory } from "react-router-dom"
-import PropTypes from 'prop-types';
+
 import axios from "axios"
 import dotenv from "dotenv"
 /* assets */ 
 import './Login.css';
-
-dotenv.config()
-
-/* Env vars */ 
-const noenv: string = "CONFIGURE YOUR ENV VARS"
-const environment = process.env.REACT_APP_ENV!
-const api_dev = process.env.REACT_APP_API_DEV!
-const api_prod = process.env.REACT_APP_API_PROD!
-
-/* If the ENV environment is active then our api is in Localhost */ 
-let api_url: string 
-environment == "DEV"? (api_url = api_dev) : (api_url = api_prod)
 
 
 type Props ={
@@ -34,7 +23,7 @@ export default function Login(props: any) {
  
 async function loginUser() {
 
-  let data = await axios.post(api_url+"/login", {
+  let data = await axios.post(getApi()+"/login", {
     headers:{'Content-Type' : 'application/json'},
     credentials: {
       username,
@@ -65,7 +54,7 @@ async function handleSubmit(e: any) {
     //history.push("/")
     setLogin(true)
     props.loginStatus(true)
-    history.push("/")
+    //history.push("/")
   }
 
 }

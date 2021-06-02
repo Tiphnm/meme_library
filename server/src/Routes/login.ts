@@ -41,7 +41,8 @@ export default async function loginRoute(req: Request ,res: Response) {
                      // User ok + pass ok 
 
                      console.log("Login Success")
-                     const token = jwt.sign({ id: fetchCredentials._id, user: fetchCredentials.username }, key_jwt);
+                     console.log(JSON.stringify(fetchCredentials))
+                     const token = jwt.sign({ id: fetchCredentials._id, user: fetchCredentials.fName }, key_jwt);
                      console.log(token)
                      return res.status(200).send(token)
 
