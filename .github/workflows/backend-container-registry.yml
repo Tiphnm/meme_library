@@ -22,7 +22,7 @@ jobs:
 
       # Create the ENV for the FRONTEND
         - name: Create env file
-        - with: 
+          with: 
             environment: ${{ secrets.REACT_APP_ENVIRONMENT }}
             api_prod: ${{ secrets.REACT_APP_API_PROD }}
             sas_token: ${{ secrets.REACT_APP_STORAGESASTOKEN }}
