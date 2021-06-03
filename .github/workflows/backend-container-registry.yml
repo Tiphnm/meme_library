@@ -31,20 +31,6 @@ jobs:
             directory: ./memeteca/.
             file_name: .env
 
-          run: |
-            cat .env
-            echo api_prod
-            echo INPUT_API_PROD
-            echo INPUT_api_prod
-            ls
-            cd ./memeteca
-            touch .env
-            echo REACT_APP_ENVIRONMENT=${{ secrets.REACT_APP_ENVIRONMENT }} >>.env 
-            echo REACT_APP_API_PROD=${{ secrets.REACT_APP_API_PROD }}>> .env
-            echo REACT_APP_STORAGESASTOKEN=${{ secrets.REACT_APP_STORAGESASTOKEN }} >> .env
-            echo REACT_APP_SECRET_TOKEN=${{ secrets.REACT_APP_SECRET_TOKEN }} >> .env
-            cat .env
-
       # Build the FRONTEND  container 
         - name: 'Build and push FRONTEND image'
           uses: azure/docker-login@v1
