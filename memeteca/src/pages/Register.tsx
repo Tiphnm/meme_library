@@ -67,11 +67,11 @@ export default function Register() {
             .required('Confirm Password is required')})
 
     return (
-    <div className="container-register">
+    <div className="container-form">
         <h1 className="title">New memetequero! 😎 </h1>
         <Formik initialValues={userData} validationSchema={validateDate} onSubmit={handleRegister} render={ ({errors, status, touched}) => (
     
-            <Form className="register-form ">
+            <Form className="form-auth">
 
             <div className="form-group">
                 <label htmlFor="firstName">First Name</label>

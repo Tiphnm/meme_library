@@ -72,16 +72,16 @@ function App(props: any) {
           </div>
       
           <div className="actions-container">
-            {/*  Profile Button  */}
-            {logged && <ProfileBtn user={username!.user} token={token} />}
-
             <Hbutton name="CREATE MEME" link="/create" />
             <Hbutton name="UPLOAD" link="/upload" />
             {!logged && <>
             <Hbutton name="REGISTER" link="/register" />
             <Hbutton name="LOGIN" link="/login" /> </> }
-
           </div>
+
+          {/*  Profile Button  */}
+          {logged && <ProfileBtn user={username!.user} />}
+          
           {/*  Responsive burguer Menu */}
           <Burguer />
           

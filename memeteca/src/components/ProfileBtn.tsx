@@ -1,23 +1,41 @@
 import React from 'react'
 import useToken from "../typescript/useToken";
+import { Redirect, useHistory } from 'react-router';
 
-
-export default function ProfileBtn(props: any) {
+type propsProfile = {
+  user: string
+}
+export default function ProfileBtn({user}: propsProfile) {
     /// https://eu.ui-avatars.com/api/?name=John
     const { token, setToken } = useToken();
+    let history = useHistory();
+
+    const avatarLink = "https://eu.ui-avatars.com/api/?name="+user
 
       /* LOGOUT FUNCTION */
-  const removeToken = (token: String | null) => {
+  const removeToken = () => {
     localStorage.removeItem("token");
     setToken(null!);
     window.location.reload();
   };
 
-
-    return (
+  // AVATAR ///
+  
+  return (
         <div className="profile-btn">
-                  <p> {props.user}  </p>
-                  <button  className="btn-logout" onClick={() => {removeToken(token)}} > Logout </button>
+                <span className="group1"> 
+                  <img src={avatarLink} alt="avatar" className="avatar"/>
+                  <p> {user}  </p>
+                </span> 
+                
+                <span className="group2">
+
+                <button  className="btn-logout" onClick={()=> history.push("/profile")} > Profile </button>
+                <button  className="btn-logout" onClick={() => {removeToken()}} > Logout </button>
+  
+
+                </span>
+              
                 </div>
 
     )

@@ -17,7 +17,7 @@ export default function HotMemes ({isLogged}: any) {
         async function getData()  {
             await axios.get(getApi()+"/memes").then( (res) => { /* api_url */ 
                 // Check if the memes arrived
-                //console.log(res.data)
+
                 setMemes(res.data)
                 setLoadingMemes(false)
             })
@@ -32,7 +32,7 @@ export default function HotMemes ({isLogged}: any) {
         <div >
            {loadingMemes? <img className="hotmeme" alt="loading..." src={loaderBlack} ></img>: 
             memes!.map(meme => <Meme data={meme} key={meme._id} canDelete={isLogged}/>)}
-            {console.log(isLogged)}
+
         </div>
     )
 }

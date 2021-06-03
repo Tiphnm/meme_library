@@ -4,7 +4,7 @@ import getApi from '../typescript/GetApi'
 
 /* Libs */ 
 import { BrowserRouter as Router, Switch, Route, Link, Redirect, useHistory } from "react-router-dom"
-
+import { Formik, Field, Form, ErrorMessage} from 'formik';
 import axios from "axios"
 import dotenv from "dotenv"
 /* assets */ 
@@ -20,9 +20,15 @@ export default function Login(props: any) {
   const [password, setPassword] = useState('')
   const [login, setLogin] = useState(false)
   const [error, setError] = useState("")
- 
-async function loginUser() {
 
+  const initialValues={
+    username: "",
+    password: ""
+  }
+
+
+
+async function loginUser() {
   let data = await axios.post(getApi()+"/login", {
     headers:{'Content-Type' : 'application/json'},
     credentials: {
@@ -42,8 +48,7 @@ async function loginUser() {
 let from_url = props.url
 let history = useHistory();
 
-async function handleSubmit(e: any) {
-  e.preventDefault();
+async function handleSubmit() {
   const loginData =  await loginUser()
   // Login was succesfull 
   console.log(loginData)
@@ -59,32 +64,35 @@ async function handleSubmit(e: any) {
 
 }
 
-
   return (
-    <>
-    <div className="login-wrapper">
-      <h1 className="title">LOGIN FORM </h1>
-      {error==""? "": <p>{error}</p>}
-      <br />
-      <form className="form" onSubmit={ 
-        handleSubmit
-        }>
+    <div className="container-form">
 
-        <h1 className="title-login">Please Sign in</h1>
-        <div className="form_username">
-          <h3>Username</h3>
+      <h1 className="title">Please Sign in 🧐</h1>
+
+      {error==""? "": <p className="error">{error}</p>}
+
+      <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+
+      { props => (    
+      <form className="form-auth" onSubmit={props.handleSubmit}>
+        <div className="form-group">
+          <label htmlFor="inputUsername">E-mail</label>
           <input id="inputUsername" placeholder="Username" onChange={e => setUsername(e.target.value)}/>
         </div>
-        <div className="form_password">
-          <h3>Password</h3>
+
+        <div className="form-group">
+        <label htmlFor="inputPassword"> Password</label>
           <input id="inputPassword" placeholder="Password" type="text" onChange={e => setPassword(e.target.value)}
           />
         </div>
-        <div className="form_button">
-          <button type="submit">Login</button>
-        </div>
+
+
+          <button type="submit" className="btn-login">Login</button>
+
       </form>
+
+       )}
+    </Formik>
     </div>
-    </>
   )
 }
