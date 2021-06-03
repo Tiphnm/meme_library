@@ -22,9 +22,20 @@ jobs:
 
       # Create the ENV for the FRONTEND
         - name: Create env file
+        - with: 
+            environment: ${{ secrets.REACT_APP_ENVIRONMENT }}
+            api_prod: ${{ secrets.REACT_APP_API_PROD }}
+            sas_token: ${{ secrets.REACT_APP_STORAGESASTOKEN }}
+            secret_token: ${{ secrets.REACT_APP_SECRET_TOKEN }}
+
           run: |
+            echo api_prod
+            echo INPUT_API_PROD
+            echo INPUT_api_prod
+            ls
             cd ./memeteca
             touch .env
+            echo REACT_APP_ENVIRONMENT=${{ secrets.REACT_APP_ENVIRONMENT }} >>.env 
             echo REACT_APP_API_PROD=${{ secrets.REACT_APP_API_PROD }}>> .env
             echo REACT_APP_STORAGESASTOKEN=${{ secrets.REACT_APP_STORAGESASTOKEN }} >> .env
             echo REACT_APP_SECRET_TOKEN=${{ secrets.REACT_APP_SECRET_TOKEN }} >> .env

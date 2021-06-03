@@ -5,6 +5,6 @@ export default function getApi() {
     const api_prod =  process.env.REACT_APP_API_PROD || "CONFIGURE YOUR ENV VARS"
 
     /* If the ENV environment is active then our api is in Localhost */ 
-    const api_url = process.env.NODE_ENV == "development"?  api_dev : api_prod
+    const api_url = process.env.REACT_APP_ENVIRONMENT == "development"?  api_dev : api_prod
     return api_url
 }
