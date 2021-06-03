@@ -24,11 +24,11 @@ jobs:
         - name: Create env file
           uses: SpicyPizza/create-envfile@v1
           with: 
-            environment: ${{ secrets.REACT_APP_ENVIRONMENT }}
-            api_prod: ${{ secrets.REACT_APP_API_PROD }}
-            sas_token: ${{ secrets.REACT_APP_STORAGESASTOKEN }}
-            secret_token: ${{ secrets.REACT_APP_SECRET_TOKEN }}
-            directory: ./memeteca/.
+            envkey_REACT_APP_ENVIRONMENT: ${{ secrets.REACT_APP_ENVIRONMENT }}
+            envkey_REACT_APP_API_PROD: ${{ secrets.REACT_APP_API_PROD }}
+            envkey_REACT_APP_STORAGESASTOKEN: ${{ secrets.REACT_APP_STORAGESASTOKEN }}
+            envkey_REACT_APP_SECRET_TOKEN : ${{ secrets.REACT_APP_SECRET_TOKEN }}
+            envkey_directory: ./memeteca/.
             file_name: .env
 
       # Build the FRONTEND  container 
