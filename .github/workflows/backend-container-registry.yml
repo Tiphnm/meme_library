@@ -22,13 +22,17 @@ jobs:
 
       # Create the ENV for the FRONTEND
         - name: Create env file
+          uses: SpicyPizza/create-envfile@v1
           with: 
             environment: ${{ secrets.REACT_APP_ENVIRONMENT }}
             api_prod: ${{ secrets.REACT_APP_API_PROD }}
             sas_token: ${{ secrets.REACT_APP_STORAGESASTOKEN }}
             secret_token: ${{ secrets.REACT_APP_SECRET_TOKEN }}
+            directory: ./memeteca/.
+            file_name: .env
 
           run: |
+            cat .env
             echo api_prod
             echo INPUT_API_PROD
             echo INPUT_api_prod
@@ -40,6 +44,7 @@ jobs:
             echo REACT_APP_STORAGESASTOKEN=${{ secrets.REACT_APP_STORAGESASTOKEN }} >> .env
             echo REACT_APP_SECRET_TOKEN=${{ secrets.REACT_APP_SECRET_TOKEN }} >> .env
             cat .env
+
       # Build the FRONTEND  container 
         - name: 'Build and push FRONTEND image'
           uses: azure/docker-login@v1
