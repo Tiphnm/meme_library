@@ -28,7 +28,7 @@ jobs:
             envkey_REACT_APP_API_PROD: ${{ secrets.REACT_APP_API_PROD }}
             envkey_REACT_APP_STORAGESASTOKEN: ${{ secrets.REACT_APP_STORAGESASTOKEN }}
             envkey_REACT_APP_SECRET_TOKEN : ${{ secrets.REACT_APP_SECRET_TOKEN }}
-            envkey_directory: ./memeteca/.
+            envkey_directory: ./.
             file_name: .env
 
       # Build the FRONTEND  container 
