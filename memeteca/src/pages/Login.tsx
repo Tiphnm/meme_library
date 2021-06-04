@@ -46,6 +46,7 @@ async function loginUser() {
 
 /* Handle the FORM SENT */
 let from_url = props.url
+
 let history = useHistory();
 
 async function handleSubmit() {

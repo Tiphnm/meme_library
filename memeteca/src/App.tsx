@@ -34,7 +34,7 @@ const jwtSecret = process.env.REACT_APP_SECRET_TOKEN
 //console.log("SECRET "+jwtSecret)
 
 /* Props: any just for testing, will be removed  */
-function App(props: any) {
+function App() {
   const { token, setToken } = useToken();
   const [logged, setLogged] = useState(false);
 
