@@ -1,6 +1,6 @@
 import React from 'react'
 import useToken from "../typescript/useToken";
-import { Redirect, useHistory } from 'react-router';
+import {useHistory } from 'react-router-dom';
 
 type propsProfile = {
   user: string
