@@ -83,7 +83,7 @@ async function handleSubmit() {
 
         <div className="form-group">
         <label htmlFor="inputPassword"> Password</label>
-          <input id="inputPassword" placeholder="Password" type="text" onChange={e => setPassword(e.target.value)}
+          <input id="inputPassword" placeholder="Password" type="password" onChange={e => setPassword(e.target.value)}
           />
         </div>
 
