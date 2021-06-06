@@ -1,21 +1,29 @@
 import react, {Key} from "react"
 
+
+/* App js */ 
+export type decodedToken = {
+    id: string,
+    user: string,
+    iat: number
+  }
+
+
 export type newMeme = {
+    _id: number,
     data: {
         id: string,
         name: string,
         url: string,
+        metadata:  {
+            likes: number,
+            dislikes: number,
+            likeBy: {},
+            dislikeBy: {},
+        }
+        date: Date
     }
     
 }
 
-//In types.ts we will define constants for user authentication and UI loading purpose
-//user reducer types
-export const SET_AUTHENTICATED="SET_AUTHENTICATED";
-export const SET_UNAUTHENTICATED="SET_UNAUTHENTICATED";
-export const SET_USER="SET_USER";
-export const LOADING_USER="LOADING_USER";
-//UI reducer types
-export const SET_ERRORS="SET_ERRORS";
-export const LOADING_UI="LOADING_UI";
-export const CLEAR_ERRORS="CLEAR_ERRORS";
+

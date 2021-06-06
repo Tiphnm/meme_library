@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
+
+:root {
+  --primary: #550053;
+  --secondary: #8340FF;
+  --darker: #3a0035;
+  --body: #292929;
+}
+
+*,::after, ::before {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--body);
+}
+
+a {
+  color: inherit;
+  font-size: inherit;
+  text-decoration: inherit;
+  display: inherit;
+  padding: inherit;
+  margin: inherit;
+}
+
+h1 {
+  font-family: 'Press Start 2P', cursive;
+  color: white;
+  padding: 20px;
+}
+
+/* Header  */ 
+
+.container-header{
+  background-color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.logo img {
+min-width: 5rem;
+width: auto;
+max-width: 15rem;
+}
+
+.actions-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row-reverse;
+  padding: 1rem;
+}
+/* Profile  Button in header */
+
+.profile-btn {
+  margin-left: 0.8rem;
+  background-color: var(--darker);
+  border: 2px solid #fff;
+  padding: 0.5rem;
+  display: flex;
+}
+
+.profile-btn p {
+  font-size: 0.8rem;
+}
+
+.btn-logout {
+  padding: 0.1rem 1rem;
+  margin: 0.2rem auto;
+  border: 1px solid white;
+  font-family:'Rubik', sans-serif;
+  font-weight: 500;
+  background-color: #333333;
+  color:  #e7e7e7;
+}
+
+.group1{
+  text-align: center;
+}
+
+.group2 {
+  margin: auto ;
+  display: flex;
+  flex-direction: column;
+  align-items:center ;
+  padding: 0.5rem;
+}
+.avatar {
+  padding: 0.1rem;
+  height: 60%;
+  width: 60%;
+  z-index: 2;
+}
+/* button in header */ 
+
+.hbutton {
+  font-family: 'Rubik', sans-serif;
+  padding: 0.5rem;
+  border: none;
+  outline: none;
+  color: white;
+  font-weight: 700;
+  background-color:var(--darker);
+  border: 2px solid #ffffff;
+  margin: 0.5rem;
+  display: inherit;
+}
+
+.hbutton:hover{
+  background-color:  var(--secondary);
+  transition: ease-in-out 0.3s;
+}
+
+.container-upload{
+  padding: 1rem;
+  background-color: #333333;
+}
+
+.container-item{
+  font-family: 'Press Start 2P', cursive;
+  
+}
+
+.img-item{
+  padding-bottom: 1rem;
+}
+ /* Responsive menu */ 
+
+.menu-toggle {
+  display: none;
+  color: white;
+  background-color: inherit;
+  padding: 0.5rem;
+  transition: 0.2s;
+  z-index: 2;
+}
+
+.menu-toggle:focus {
+  transition-timing-function: ease-in-out;
+  transition: 0.2s;
+  transform: rotate(270deg) ;
+}
+
+/* Menu that will go out  */ 
+.noir {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #292929;
+  height: 100vh; 
+  z-index: 2;
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 600px)  {
+  html {
+    width: 100%;
+ }
+  body {
+    background-color: rgb(61, 61, 61);
+    width: inherit;
+  }
+  
+  /* header */ 
+
+  header {
+    width: 100%;
+  }
+  .menu-toggle {
+   display: flex;
+ }
+  .actions-container{
+    background-color: white;
+    display: none;
+  }
+
+  /* meme */ 
+  .container-meme {
+    width: 100%;
+  }
+  .meme {
+    width: 90%;
+  }
+  .container-buttons{
+    width: 90%;
+  }
+}

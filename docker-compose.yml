@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  backend:
+    env_file:
+        "./server/.env"
+    #build:
+      #context: ./server
+      #dockerfile: ./Dockerfile
+    image: "memetecaregistry.azurecr.io/server"
+    ports:
+      - "4000:4000"
+  frontend:
+    #build:
+        #context: ./memeteca
+        #dockerfile: ./Dockerfile
+    image: "memetecaregistry.azurecr.io/frontend"
+    ports:
+      - "3000:3000"
+    links:
+      - "backend"                                  

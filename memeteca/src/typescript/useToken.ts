@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 interface typeToken {
-    token: String | null;
+    token: string | null;
 }
 
 export default function useToken() {
@@ -10,18 +10,19 @@ export default function useToken() {
   function getToken() {
     console.log("GetToken is being called")
     const tokenString = localStorage.getItem("token");  
-    let userToken = JSON.parse(tokenString || "{}")
-    console.log(userToken.token) 
-    return userToken.token
+    console.log(tokenString)
+    let userToken = JSON.parse(tokenString!)
+    console.log(userToken) 
+    return userToken
   }
 
   // Use the token
   function saveToken(userToken: typeToken) {
-    console.log("SAVE TOKEN is being called")
-    console.log("token" + userToken);
+    console.log("SAVE TOKEN is being called token " + userToken)
+ 
     const tokenString =  JSON.stringify(userToken);  
     localStorage.setItem("token", tokenString);
-    setToken(userToken.token);
+    setToken(userToken);
   }
 
   const [token, setToken] = useState(getToken());

@@ -12,5 +12,7 @@
     "azureFunctions.projectLanguage": "TypeScript",
     "azureFunctions.projectRuntime": "~3",
     "debug.internalConsoleOptions": "neverOpen",
-    "azureFunctions.preDeployTask": "npm prune"
+    "azureFunctions.preDeployTask": "npm prune",
+    "appService.defaultWebAppToDeploy": "/subscriptions/4398a24f-81d9-469d-8b59-2f51ac63df2d/resourceGroups/JTFMemeteca/providers/Microsoft.Web/sites/memeteca",
+    "appService.deploySubpath": "server"
 }

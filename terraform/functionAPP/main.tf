@@ -105,7 +105,6 @@ data "azurerm_storage_account_sas" "sas" {
 }
 
 # Create the App service plan ( consumption )
-
 resource "azurerm_app_service_plan" "asp" {
     name = "memeteca-plan"
     resource_group_name = "${data.azurerm_resource_group.rg.name}"
@@ -120,7 +119,6 @@ resource "azurerm_app_service_plan" "asp" {
 
 
 #  Create the function APP 
-
 resource "azurerm_function_app" "functions" {
     name = "memetecafuncionapp"
     location = "${data.azurerm_resource_group.rg.location}"
@@ -141,9 +139,7 @@ resource "azurerm_function_app" "functions" {
     }
 }
 
-
 ### Application insgiths to get access to logs
-
 resource "azurerm_application_insights" "logs" {
   name                = "memeteca-appinsights"
   location            = "${data.azurerm_resource_group.rg.location}"
