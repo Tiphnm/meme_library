@@ -6,9 +6,6 @@ import getApi from '../typescript/GetApi'
 import { BrowserRouter as Router, Switch, Route, Link, Redirect, useHistory } from "react-router-dom"
 import { Formik, Field, Form, ErrorMessage} from 'formik';
 import axios from "axios"
-import dotenv from "dotenv"
-/* assets */ 
-import './Login.css';
 
 
 type Props ={

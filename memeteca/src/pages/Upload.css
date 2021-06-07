@@ -1,103 +1,33 @@
-* {
-    margin: 0;
-    padding: 0;
-  }
-.photo{
-    font-family: 'Press Start 2P', cursive;
-    color: #FFFFFF;
-    padding-top: 2rem;
+.container {
+    background-color: var(--darker);
+    width: auto;
+    display: flex;
+    justify-content: center;
+    color: white;
+    margin: 2rem auto;
 }
 
-.title-blob{
-    font-family: 'Press Start 2P', cursive;
-    color: #FFFFFF;
-    padding-top: 2rem;
+.container-main{
+    margin: 1rem;
+    max-width:30rem;
+    text-align: center;
+    padding: 1rem
+}
+
+.upload-box {
+    display: flex;
+    flex: 1 100%;
+    flex-direction: column;
+    margin: 1rem auto;
+
+}
+
+.btn-upload {
+font-size: 2rem;
+}
+
+.file-selector {
+    background-color: aqua;
+    padding: 1rem;
     
 }
-
-.list{
-    list-style-type: none;
-}
-
-.button-upload{
-    color:#FFFFFF; 
-    border: 2px solid #8340FF;
-    border-radius: 1rem;
-    background-color: #8340FF;
-    padding: 14px 28px;
-    font-family: 'Press Start 2P', cursive;
-}
-
-.container{
-    display: flex;
-}
-.container-main{
-    background-color: #333333;
-    margin:0 auto;
-    padding-top: 2rem;
-    width: 50%;
-}
-.container-main h3{
-    font-family: 'Press Start 2P', cursive;
-    color: white;
-}
-.container-main img{
-    padding-top: 1rem;
-    width: 50%;
-    height: 100%;
-}
-.container-meme{
-    width: 100%;
-    margin: 0 auto;
-}
-.container-comment{
-    color: white;
-    line-height: 1rem;
-
-}
-
-
-
-.span2{
-    margin-left: 0.5rem;
-}
-
-.far {
-
-    width:8rem;
-    color: white;
-}
-
-/********container aside*********/
-
-.container-aside{
-    color: white;
-    font-family: 'Press Start 2P', cursive;
-    margin: 0 auto;
-    width: 25%;
-    padding-top: 2rem;
-}
-
-.container-aside h1{
-    font-size: 1.2rem;
-}
-
-.container-aside ul li img{
-    list-style-type: none;
-    color: white;
-    padding-top: 2rem;
-    width:2rem;
-
-}
-
-.container-last{
-    width: 25%;
-}
-
-.thumb-meme{
-    padding-left: 1rem;
-    border-radius: 10px;
-}
-
-
-

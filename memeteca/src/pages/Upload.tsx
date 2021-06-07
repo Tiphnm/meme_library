@@ -1,16 +1,11 @@
 import React, { useState } from 'react';
 import Path from 'path';
-import troll from '../assets/img/troll.png'
 import uploadFileToBlob, { isStorageConfigured } from '../components/azure-storage-blob';
 import { BrowserRouter as Router, Switch, Route, Link, Redirect, useHistory } from "react-router-dom"
 import './Upload.css'
 
 const storageConfigured = isStorageConfigured();
-const Upload = (props: any): JSX.Element => {
-
-
-const isLogged = false 
-
+export default function Upload() {
 
   // all blobs in container
   const [blobList, setBlobList] = useState<string[]>([]);
@@ -45,9 +40,11 @@ const isLogged = false
 
   // display form
   const DisplayForm = () => (
-    <div>
-      <input type="file" onChange={onFileChange} key={inputKey || ''} />
-      <button className="button-upload" type="submit" onClick={onFileUpload}>
+    <div className="upload-box">
+ 
+      <input type="file" onChange={onFileChange} key={inputKey || ''} className="file-selector" name="filebox"/>
+      <label htmlFor="filebox"><strong>Choose a file</strong></label>
+      <button className="btn-login btn-upload" type="submit" onClick={onFileUpload}>
         Upload!
           </button>
     </div>
@@ -73,51 +70,34 @@ const isLogged = false
   return ( 
     <>
       <div className="container">
-        
-        <div className="container-aside">
-          <h1>Popular</h1>
-          <ul>
-            <li>
-              <a>
-                <img src={troll} alt="meme-img" /><span className="thumb-meme">My meme</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div className="container-main">
           {/* MEME FORM */}
-          <div className="uploadMemeForm">
+          <div className="container-main">
           <h1 className="title-blob">Upload Your meme and enjoy</h1>
-          <label htmlFor="name">Name </label>
+
+          <span className="form-group"> 
+          <label htmlFor="name">Title </label>
           <input name="name" type="text" id="name" />
-          <br />
+          </span>
+
+          <span className="form-group"> 
           <label htmlFor="tags">Tags </label>
           <input name="tags" type="text" id="tags" />
+          </span>
+
+
            {storageConfigured && !uploading && DisplayForm()}
+
+
+
           </div>
 
 
           {storageConfigured && uploading && <div>Uploading</div>}
-          <hr />
+
           {storageConfigured && blobList.length > 0 && DisplayImagesFromContainer()}
           {!storageConfigured && <div>Storage is not configured.</div>}
-          <div className="container-comment">
-            <button className="like_button">
-              <i className="far fa-thumbs-up fa-3x">
-              </i>
-            </button>
-            <button className="like_button">
-              <i className="far fa-thumbs-down fa-3x">
-              </i>
-            </button>
-            <span>comments -</span>
-            <span className="span2">313 points</span>
-          </div>
-        </div>
-        <div className="container-last"></div>
+        
       </div>
     </>
   );
 };
-
-export default Upload;

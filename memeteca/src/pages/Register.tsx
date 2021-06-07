@@ -3,6 +3,7 @@ import { Formik, Field, Form, ErrorMessage} from 'formik';
 import {useHistory} from "react-router-dom"
 import * as Yup from 'yup';
 import axios from "axios"
+import getApi from '../typescript/GetApi'
 import '../assets/style/Form.css'
 
 export default function Register() {
@@ -12,9 +13,9 @@ export default function Register() {
     /* What do we do after submitting the form */ 
     const handleRegister = async ({firstName, lastName, email, password}: any, actions: any) => {
         actions.setSubmitting(true)
-        var url = "http://localhost:4000/register"
+
         try {
-            const registerData = await axios.post(url, {
+            const registerData = await axios.post(getApi()+"/register", {
                 headers: { 'Content-Type': 'application/json' },
                 credentials: {
                     firstName: firstName,
