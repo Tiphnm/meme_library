@@ -20,16 +20,16 @@ jobs:
             docker build ./server/. -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/server:latest
             docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/server:latest
 
-      # Create the ENV for the FRONTEND
-        - name: Create env file
-          uses: SpicyPizza/create-envfile@v1
-          with: 
-            envkey_REACT_APP_ENVIRONMENT: ${{ secrets.REACT_APP_ENVIRONMENT }}
-            envkey_REACT_APP_API_PROD: ${{ secrets.REACT_APP_API_PROD }}
-            envkey_REACT_APP_STORAGESASTOKEN: ${{ secrets.REACT_APP_STORAGESASTOKEN }}
-            envkey_REACT_APP_SECRET_TOKEN : ${{ secrets.REACT_APP_SECRET_TOKEN }}
-            envkey_directory: ./.
-            file_name: .env
+      # # Create the ENV for the FRONTEND
+      #   - name: Create env file
+      #     uses: SpicyPizza/create-envfile@v1
+      #     with: 
+      #       envkey_REACT_APP_ENVIRONMENT: ${{ secrets.REACT_APP_ENVIRONMENT }}
+      #       envkey_REACT_APP_API_PROD: ${{ secrets.REACT_APP_API_PROD }}
+      #       envkey_REACT_APP_STORAGESASTOKEN: ${{ secrets.REACT_APP_STORAGESASTOKEN }}
+      #       envkey_REACT_APP_SECRET_TOKEN : ${{ secrets.REACT_APP_SECRET_TOKEN }}
+      #       envkey_directory: ./.
+      #       file_name: .env
 
       # Build the FRONTEND  container 
         - name: 'Build and push FRONTEND image'
