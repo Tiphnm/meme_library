@@ -1,8 +1,6 @@
-import * as bcrypt from "bcrypt"
+//import * as bcrypt from "bcrypt"
 import mongoose, { Mongoose } from "mongoose"
-import { type } from 'os'
 import dotenv from "dotenv"
-import { exception } from "console"
 dotenv.config()
 
 const MONGOURI: string = process.env.MONGOURI
