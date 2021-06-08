@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-interface typeToken {
+export interface typeToken {
     token: string | null;
 }
 
@@ -31,4 +31,13 @@ export default function useToken() {
     setToken: saveToken,
     token
   }
+}
+
+export function logout(funcSetToken: (param: string | null ) => void) {
+        /* LOGOUT FUNCTION */
+
+          localStorage.removeItem("token");
+          funcSetToken(null!);
+          window.location.reload();
+      
 }

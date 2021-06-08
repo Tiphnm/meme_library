@@ -1,6 +1,7 @@
 import React, {useState } from 'react';
 /*  Components */
 import getApi from '../typescript/GetApi'
+import {typeToken} from "../typescript/useToken"
 
 /* Libs */ 
 import { BrowserRouter as Router, Switch, Route, Link, Redirect, useHistory } from "react-router-dom"
@@ -8,11 +9,18 @@ import { Formik, Field, Form, ErrorMessage} from 'formik';
 import axios from "axios"
 
 
-type Props ={
-  setToken?: ()=>void
+type loginProps ={
+  setToken: (param: typeToken)=> void;
+  loginStatus: (status:boolean) =>void;
+  handleSubmit?: () => void;
+
 }
 
-export default function Login(props: any) {
+type formProps = {
+
+}
+
+export default function Login(props: loginProps) {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [login, setLogin] = useState(false)
@@ -42,7 +50,7 @@ async function loginUser() {
 }
 
 /* Handle the FORM SENT */
-let from_url = props.url
+//let from_url = props.url
 
 let history = useHistory();
 

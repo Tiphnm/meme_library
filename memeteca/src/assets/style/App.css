@@ -146,16 +146,43 @@ max-width: 15rem;
 
 /* Menu that will go out  */ 
 .noir {
-  display: none;
-  position: absolute;
+  text-align: center;
+  justify-content: center;
+  position: fixed;
   top: 0;
-  left: 0;
+  right: 0;
+  z-index: 2;
   width: 100%;
   background-color: #292929;
   height: 100vh; 
-  z-index: 2;
+  transition: 0.5s;
+  justify-content: center;
+  overflow: hidden;
 }
 
+.blade-menu {
+  position: fixed;
+  list-style: none;
+  width: 100%;
+}
+
+
+.blade-menu li {
+  background-color: var(--darker);
+  font-family: 'Press Start 2P', cursive;
+  padding: 0.8rem;
+  height: 100%;
+  color: #fff;
+  font-size: 1.5rem;
+  border: 1px solid white;
+  overflow: hidden;
+  margin-top: 0.5rem 
+
+}
+
+.blade-menu li:hover {
+
+}
 @media only screen and (min-device-width : 320px) and (max-device-width : 600px)  {
   html {
     width: 100%;
@@ -187,5 +214,9 @@ max-width: 15rem;
   }
   .container-buttons{
     width: 90%;
+  }
+
+  .profile-btn {
+    display: none;
   }
 }

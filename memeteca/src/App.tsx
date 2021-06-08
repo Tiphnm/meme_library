@@ -92,8 +92,7 @@ function App() {
         <div className="wrapper">
           <Switch>
             <Route exact path="/">
-              {/*  LOGOUT */}
-             {console.log("jojooo" + logged)}
+              {/*  HOT MEMES */}
               <HotMemes isLogged={logged} />
             </Route>
 

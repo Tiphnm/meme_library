@@ -1,5 +1,5 @@
 import React from 'react'
-import useToken from "../typescript/useToken";
+import useToken, {logout} from "../typescript/useToken";
 import {useHistory } from 'react-router-dom';
 
 type propsProfile = {
@@ -12,12 +12,7 @@ export default function ProfileBtn({user}: propsProfile) {
 
     const avatarLink = "https://eu.ui-avatars.com/api/?name="+user
 
-      /* LOGOUT FUNCTION */
-  const removeToken = () => {
-    localStorage.removeItem("token");
-    setToken(null!);
-    window.location.reload();
-  };
+
 
   // AVATAR ///
   
@@ -31,7 +26,7 @@ export default function ProfileBtn({user}: propsProfile) {
                 <span className="group2">
 
                 <button  className="btn-logout" onClick={()=> history.push("/profile")} > Profile </button>
-                <button  className="btn-logout" onClick={() => {removeToken()}} > Logout </button>
+                <button  className="btn-logout" onClick={() => {}} > Logout </button>
   
 
                 </span>
