@@ -1,81 +1,44 @@
-// Import react
-import * as React from 'react'
+import React from 'react'
+
 
 // Interface for Form Component
 interface FormInterface {
-  isMemeGenerated: boolean;
-  textBottom: string;
-  textTop: string;
-  handleImageChange: () => void;
-  handleImageInputChange: (event: React.ChangeEvent) => void;
-  handleInputChange: (event: React.ChangeEvent) => void;
-  handleMemeGeneration: () => void;
-  handleMemeReset: () => void;
+    isMemeGenerated?: boolean;
+    textBottom?: string;
+    textTop?: string;
+    handleImageChange?: () => void;
+    handleImageInputChange?: (event: React.ChangeEvent) => void;
+    handleInputChange?: (event: React.ChangeEvent) => void;
+    handleMemeGeneration?: () => void;
+    handleMemeReset?: () => void;
+  }
+
+
+
+export default function Form(props: FormInterface) {
+    return (
+        <div className="create-container">
+            <h1>CREATE YOUR MEME</h1>
+            <form className="form-create">
+
+                <span className="group-inputs">
+                    <label>TOP</label>
+                    <input type="text"  placeholder="Text top" value={props.textTop} onChange={props.handleInputChange}/>
+                    <label>BOTTOM</label>
+                    <input type="text"  placeholder="Text Bottom" value={props.textBottom} onChange={props.handleInputChange}/>
+                </span>
+            
+                <span className="group-btn">
+                    <button className="btn-create" type="button">GET RANDOM IMG</button>
+                    {/* Local IMG*/}
+                    <label className="btn-create" htmlFor="fileInput">LOAD LOCAL IMG</label>
+                    <input id="fileInput" name="fileInput" type="file" accept=".jpg, .jpeg, .png" onChange={props.handleImageInputChange} hidden />
+                    
+                    <button className="btn-create" type="button" >Button</button>
+                    <button className="btn-create" type="button">Button</button>
+                </span>
+                
+            </form>
+        </div>
+    )
 }
-
-// Form component
-const Form = (props: FormInterface) => {
-  return (
-<>
-      <div className="form__inputs">
-        {/* Input for the text at the top */}
-        <input
-          name="text-top"
-          placeholder="Text top"
-          type="text"
-          value={props.textTop}
-          onChange={props.handleInputChange}
-        />
-
-        {/* Input for the text at the bottom */}
-        <input
-          name="text-bottom"
-          placeholder="Text bottom"
-          type="text"
-          value={props.textBottom}
-          onChange={props.handleInputChange}
-        />
-      </div>
-
-      <div className="form__btns">
-        {/* Button to load random image from api.imgflip.com */}
-        <button
-          className="btn btn-primary"
-          type="button"
-          onClick={props.handleImageChange}
-        >
-          Change image
-        </button>
-
-        {/* 'Button' to load image from disk */}
-        <label
-          className="btn-load"
-          htmlFor="fileInput"
-        >
-          Load image
-          <input id="fileInput" name="fileInput" type="file" accept=".jpg, .jpeg, .png" onChange={props.handleImageInputChange} hidden />
-        </label>
-
-        {/* Button to generate png image of the meme */}
-        <button
-          className="btn btn-primary"
-          type="button"
-          onClick={props.handleMemeGeneration}
-        >
-          Generate meme
-        </button>
-
-        {/* Button to remove the meme image from the DOM */}
-        {props.isMemeGenerated && <button
-          className="btn btn-danger"
-          type="button"
-          onClick={props.handleMemeReset}
-        >
-          Reset
-        </button>}
-      </div>
-    </>
-  )
-}
-
-export default Form
