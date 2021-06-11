@@ -73,7 +73,7 @@
 .content h1,h2 {
     max-width: 100%;
     margin: 0;
-    padding: 0 5rem;
+    padding: 0;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 48px;
     text-align: center;
@@ -86,9 +86,6 @@
 }
 
 .content h1 {
-    position: relative;
-    z-index: 1;
-    top: rem
 
 }
 .content h2 {
@@ -98,6 +95,30 @@
 .meme-template {
     width: 80%;
     padding: 0rem;
-    margin-top: 2rem;
+    margin: 0rem;
     background-color: red;
+}
+
+.generated {    
+    width: 100%;
+    padding: 0rem;
+    margin-top: 0rem;
+    border: 1px solid var(--secondary);
+}
+
+.generated-container{
+    color: black;
+    font-size: 2rem;
+    background-color: var(--secondary);
+}
+
+.arrow {
+    width: 5rem;
+}
+
+.title-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--darker);
 }

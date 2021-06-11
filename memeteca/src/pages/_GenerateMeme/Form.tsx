@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {ReactEventHandler, useState} from 'react'
 import {template} from "../../typescript/types"
 
 // Interface for Form Component
@@ -8,8 +8,6 @@ interface FormInterface {
     textBottom: React.Dispatch<string>
     images: template[]
     HandleActiveImage: React.Dispatch<string>
-
-
     handleMemeGeneration?: () => void;
     handleMemeReset?: () => void;
   }
@@ -24,11 +22,9 @@ export default function Form(props: FormInterface) {
 
       // Handle image upload via file input
     function handleImageInputChange(event: any) {
-        // Update activeImage state
         props.HandleActiveImage(window.URL.createObjectURL(event.target.files[0]))
       }
-      // ...
-    
+
     return (
    <>
             <h1>CREATE YOUR MEME</h1>

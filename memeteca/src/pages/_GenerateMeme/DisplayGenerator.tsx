@@ -4,11 +4,8 @@ import React from 'react'
 interface DisplayInterface {
     top: string;
     bottom: string;
-
     activeImage?: string;
     contentRef?: React.RefObject<any>;
- 
-
   }
 
 export default function DisplayGenerator(props: DisplayInterface) {
