@@ -8,8 +8,6 @@ const storageAccountName = process.env.REACT_APP_STORAGE_STORAGERESOURCENAME;
 
 /*  Disable upload button if the Storage is not configurated */
 export const isStorageConfigured = () => {
-  console.log(storageAccountName)
-  console.log(sasToken)
   return (!storageAccountName || !sasToken) ? false : true;
 }
 

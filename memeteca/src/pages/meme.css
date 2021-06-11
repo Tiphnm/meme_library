@@ -16,7 +16,7 @@ img {
 display: flex;
 flex-direction: column;
 align-items: center;
-max-width: 30rem;
+max-width: fit-content;
 width: inherit;
 text-align: center;
 margin: 2rem auto;
@@ -27,7 +27,7 @@ transition: 0.2s;
 .meme {
     background-color: rgb(51, 51, 51);
     align-self: center;
-    width: 25rem;
+    width: 35rem;
     margin: 0 1rem;
 }
 
@@ -43,11 +43,11 @@ p {
 
 .container-buttons{
     display: flex;
-    max-width: 90%;
-    width: 25rem;
+    width: 94.7%;
     flex-wrap: wrap;
     justify-content: center;
     padding: .2rem;
+    margin: 0 1rem;
     background-color: var(--primary);
 }
 

@@ -16,7 +16,7 @@ interface FormInterface {
 // Form component
 const Form = (props: FormInterface) => {
   return (
-    <div className="form">
+<>
       <div className="form__inputs">
         {/* Input for the text at the top */}
         <input
@@ -74,7 +74,7 @@ const Form = (props: FormInterface) => {
           Reset
         </button>}
       </div>
-    </div>
+    </>
   )
 }
 

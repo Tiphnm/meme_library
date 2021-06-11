@@ -105,8 +105,9 @@ export default function Generator() {
 
   return (
     <>
-    <div className="App">
+    <div className="container-form">
       {/* Add Form component */}
+
       <Form
         textTop={textTop}
         textBottom={textBottom}
