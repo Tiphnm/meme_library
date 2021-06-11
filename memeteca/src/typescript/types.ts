@@ -26,4 +26,9 @@ export type newMeme = {
     
 }
 
+/* Meme generator */ 
+
+export type template = {
+    url: string
+}
 
